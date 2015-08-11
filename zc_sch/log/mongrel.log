@@ -1,0 +1,59 @@
+================================================================================
+scheduler caught exception :
+Mysql::Error: Lost connection to MySQL server during query: SELECT * FROM sys_args WHERE (sys_args.`code` = '2001')  LIMIT 1
+================================================================================
+** TERM signal received.
+** Daemonized, any open files are closed.  Look at /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid and log/mongrel.log for info.
+** Starting Mongrel listening at 0.0.0.0:3100
+** Starting Rails with development environment...
+/usr/local/zc_sch/config/boot.rb:20:Warning: Gem::SourceIndex#search support for String patterns is deprecated
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3100
+** Writing PID file to /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid
+** TERM signal received.
+** Daemonized, any open files are closed.  Look at /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid and log/mongrel.log for info.
+** Starting Mongrel listening at 0.0.0.0:3100
+** Starting Rails with development environment...
+/usr/local/zc_sch/config/boot.rb:20:Warning: Gem::SourceIndex#search support for String patterns is deprecated
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3100
+** Writing PID file to /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid
+** TERM signal received.
+** Daemonized, any open files are closed.  Look at /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid and log/mongrel.log for info.
+** Starting Mongrel listening at 0.0.0.0:3100
+** Starting Rails with development environment...
+/usr/local/zc_sch/config/boot.rb:20:Warning: Gem::SourceIndex#search support for String patterns is deprecated
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3100
+** Writing PID file to /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid
+** TERM signal received.
+** Daemonized, any open files are closed.  Look at /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid and log/mongrel.log for info.
+** Starting Mongrel listening at 0.0.0.0:3100
+** Starting Rails with development environment...
+/usr/local/zc_sch/config/boot.rb:20:Warning: Gem::SourceIndex#search support for String patterns is deprecated
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3100
+** Writing PID file to /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid
+** TERM signal received.
+** Daemonized, any open files are closed.  Look at /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid and log/mongrel.log for info.
+** Starting Mongrel listening at 0.0.0.0:3100
+** Starting Rails with development environment...
+/usr/local/zc_sch/config/boot.rb:20:Warning: Gem::SourceIndex#search support for String patterns is deprecated
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+** Mongrel 1.1.4 available at 0.0.0.0:3100
+** Writing PID file to /usr/local/zc_sch/log/mongrel_pid/mongrel_3100.pid

@@ -1,0 +1,1 @@
+nohup mongrel_rails start -e production -c /usr/local/zc_sch -p 3100 &
