@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: UserDuty</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">UserDuty</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/models/user_duty_rb.html">
+                app/models/user_duty.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ActiveRecord::Base
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001841">is_caiwu</a>&nbsp;&nbsp;
+      <a href="#M001839">is_chuzhang</a>&nbsp;&nbsp;
+      <a href="#M001840">is_zhuli</a>&nbsp;&nbsp;
+      <a href="#M001838">validate_on_create</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M001841" class="method-detail">
+        <a name="M001841"></a>
+
+        <div class="method-heading">
+          <a href="#M001841" class="method-signature">
+          <span class="method-name">is_caiwu</span><span class="method-args">(user_code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+判断是否可以看财务数据
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001841-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001841-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user_duty.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">is_caiwu</span>(<span class="ruby-identifier">user_code</span>)
+22:     <span class="ruby-identifier">count</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;user_code=? and duty_code='0009'&quot;</span>, <span class="ruby-identifier">user_code</span>]) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;Y&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;N&quot;</span>
+23:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001839" class="method-detail">
+        <a name="M001839"></a>
+
+        <div class="method-heading">
+          <a href="#M001839" class="method-signature">
+          <span class="method-name">is_chuzhang</span><span class="method-args">(user_code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+判断是否为处长，是返回&quot;Y&quot;，否则返回&quot;N&quot;
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001839-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001839-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user_duty.rb, line 11</span>
+11:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">is_chuzhang</span>(<span class="ruby-identifier">user_code</span>)
+12:     <span class="ruby-identifier">count</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;user_code=? and duty_code='0001'&quot;</span>, <span class="ruby-identifier">user_code</span>]) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;Y&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;N&quot;</span>
+13:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001840" class="method-detail">
+        <a name="M001840"></a>
+
+        <div class="method-heading">
+          <a href="#M001840" class="method-signature">
+          <span class="method-name">is_zhuli</span><span class="method-args">(user_code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+判断是否为助理，是返回&quot;Y&quot;，否则返回&quot;N&quot;
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001840-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001840-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user_duty.rb, line 16</span>
+16:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">is_zhuli</span>(<span class="ruby-identifier">user_code</span>)
+17:     <span class="ruby-identifier">count</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;user_code=? and duty_code='0003'&quot;</span>, <span class="ruby-identifier">user_code</span>]) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;Y&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;N&quot;</span>
+18:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001838" class="method-detail">
+        <a name="M001838"></a>
+
+        <div class="method-heading">
+          <a href="#M001838" class="method-signature">
+          <span class="method-name">validate_on_create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001838-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001838-source">
+<pre>
+   <span class="ruby-comment cmt"># File app/models/user_duty.rb, line 2</span>
+2:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_on_create</span>
+3:     <span class="ruby-identifier">d</span>=<span class="ruby-constant">UserDuty</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;user_code='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">user_code</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;' and duty_code='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">duty_code</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;'&quot;</span> )
+4:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">empty?</span>
+5:     <span class="ruby-keyword kw">else</span>
+6:       <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span>(<span class="ruby-value str">&quot;职务重复添加！&quot;</span>)
+7:     <span class="ruby-keyword kw">end</span>
+8:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: EndtypeCountController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">EndtypeCountController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/endtype_count_controller_rb.html">
+                app/controllers/endtype_count_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001827">list</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001827" class="method-detail">
+        <a name="M001827"></a>
+
+        <div class="method-heading">
+          <a href="#M001827" class="method-signature">
+          <span class="method-name">list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001827-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001827-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/endtype_count_controller.rb, line 3</span>
+ 3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list</span>
+ 4:     <span class="ruby-ivar">@datestyle_state</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案时间段&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;结案时间段&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案结案时间段&quot;</span>}
+ 5:     <span class="ruby-identifier">j</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:j</span>]
+ 6:     <span class="ruby-ivar">@date1</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date1</span>]
+ 7:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+ 8:       <span class="ruby-ivar">@date1</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">at_beginning_of_year</span>.<span class="ruby-identifier">to_date</span>
+ 9:     <span class="ruby-keyword kw">end</span>
+10:     <span class="ruby-ivar">@date2</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date2</span>]
+11:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+12:       <span class="ruby-ivar">@date2</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+13:     <span class="ruby-keyword kw">end</span>
+14:     <span class="ruby-ivar">@endcase</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:endcase</span>]
+15:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:j</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+16:       <span class="ruby-ivar">@datestyle</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:j</span>][<span class="ruby-identifier">:datestyle</span>]
+17:     <span class="ruby-keyword kw">end</span>
+18:     <span class="ruby-ivar">@end_type</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8117' and state='Y' and used='Y'&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'data_val'</span>,<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;data_val,data_text&quot;</span>)
+19:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'0001'</span>
+20:       <span class="ruby-ivar">@clerks_1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='Y' and users.used='Y')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' order by clerks.name&quot;</span>)
+21:       <span class="ruby-ivar">@clerks_2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='N' or users.used='N')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' order by clerks.name&quot;</span>)
+22:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'0002'</span>
+23:       <span class="ruby-ivar">@clerks_1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='Y' and users.used='Y')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.end_date&gt;='#{@date1}' and tb_cases.end_date&lt;='#{@date2}' order by clerks.name&quot;</span>)
+24:       <span class="ruby-ivar">@clerks_2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='N' or users.used='N')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.end_date&gt;='#{@date1}' and tb_cases.end_date&lt;='#{@date2}' order by clerks.name&quot;</span>)
+25:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'0003'</span>
+26:       <span class="ruby-ivar">@clerks_1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='Y' and users.used='Y')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and  tb_cases.end_date&gt;='#{@date1}' and tb_cases.end_date&lt;='#{@date2}' order by clerks.name&quot;</span>)
+27:       <span class="ruby-ivar">@clerks_2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select distinct clerks.name as name,clerks.code as code from tb_cases,(select distinct users.name,users.code from users where (users.states='N' or users.used='N')  ) as clerks where tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.clerk=clerks.code and  tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and  tb_cases.end_date&gt;='#{@date1}' and tb_cases.end_date&lt;='#{@date2}' order by clerks.name&quot;</span>)
+28:     <span class="ruby-keyword kw">end</span>
+29:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

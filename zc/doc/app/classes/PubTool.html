@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: PubTool</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">PubTool</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/models/pub_tool_rb.html">
+                app/models/pub_tool.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+To change this template, choose Tools | Templates and open the template in
+the editor.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002073">arbitrator</a>&nbsp;&nbsp;
+      <a href="#M002074">get_arbitstyle</a>&nbsp;&nbsp;
+      <a href="#M002078">get_date</a>&nbsp;&nbsp;
+      <a href="#M002079">get_dear_money</a>&nbsp;&nbsp;
+      <a href="#M002077">get_end_day</a>&nbsp;&nbsp;
+      <a href="#M002067">get_first_record</a>&nbsp;&nbsp;
+      <a href="#M002076">get_grade</a>&nbsp;&nbsp;
+      <a href="#M002080">get_indefinite_money</a>&nbsp;&nbsp;
+      <a href="#M002068">get_last_record</a>&nbsp;&nbsp;
+      <a href="#M002081">get_litigation_fee</a>&nbsp;&nbsp;
+      <a href="#M002083">get_litigation_fee2</a>&nbsp;&nbsp;
+      <a href="#M002072">get_parties</a>&nbsp;&nbsp;
+      <a href="#M002082">get_processing_fee</a>&nbsp;&nbsp;
+      <a href="#M002084">get_processing_fee2</a>&nbsp;&nbsp;
+      <a href="#M002085">get_sign</a>&nbsp;&nbsp;
+      <a href="#M002075">getd</a>&nbsp;&nbsp;
+      <a href="#M002061">n_to_c</a>&nbsp;&nbsp;
+      <a href="#M002062">n_to_md</a>&nbsp;&nbsp;
+      <a href="#M002063">n_to_p</a>&nbsp;&nbsp;
+      <a href="#M002060">p_en</a>&nbsp;&nbsp;
+      <a href="#M002059">put_to</a>&nbsp;&nbsp;
+      <a href="#M002064">round_0</a>&nbsp;&nbsp;
+      <a href="#M002065">round_2</a>&nbsp;&nbsp;
+      <a href="#M002066">round_3</a>&nbsp;&nbsp;
+      <a href="#M002069">sql_check</a>&nbsp;&nbsp;
+      <a href="#M002070">sql_check_2</a>&nbsp;&nbsp;
+      <a href="#M002071">sql_check_3</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002073" class="method-detail">
+        <a name="M002073"></a>
+
+        <div class="method-heading">
+          <a href="#M002073" class="method-signature">
+          <span class="method-name">arbitrator</span><span class="method-args">(code,n)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+仲裁员
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002073-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002073-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 158</span>
+158:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">arbitrator</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">n</span>)
+159:     <span class="ruby-ivar">@case_arbitman</span> = <span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;used = 'Y' and recevice_code = ? and arbitmantype = ?&quot;</span>,<span class="ruby-identifier">code</span>,<span class="ruby-identifier">n</span>])
+160:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case_arbitman</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+161:       <span class="ruby-ivar">@chief_a</span>= <span class="ruby-constant">TbArbitman</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used = 'Y' and code = ? &quot;</span>,<span class="ruby-ivar">@case_arbitman</span>.<span class="ruby-identifier">arbitman</span>])
+162:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@chief_a</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+163:         <span class="ruby-ivar">@c_arbit</span> = <span class="ruby-ivar">@chief_a</span>.<span class="ruby-identifier">name</span>
+164:       <span class="ruby-keyword kw">else</span>
+165:         <span class="ruby-ivar">@c_arbit</span> = <span class="ruby-value str">&quot;&quot;</span>
+166:       <span class="ruby-keyword kw">end</span>
+167:     <span class="ruby-keyword kw">else</span>
+168:       <span class="ruby-ivar">@c_arbit</span> = <span class="ruby-value str">&quot;&quot;</span>
+169:     <span class="ruby-keyword kw">end</span>
+170:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@c_arbit</span>
+171:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002074" class="method-detail">
+        <a name="M002074"></a>
+
+        <div class="method-heading">
+          <a href="#M002074" class="method-signature">
+          <span class="method-name">get_arbitstyle</span><span class="method-args">(code,v1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+仲裁员选定方式
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002074-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002074-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 173</span>
+173:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_arbitstyle</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">v1</span>)
+174:     <span class="ruby-ivar">@arbitmenA</span>=<span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and recevice_code=? and arbitmantype=?&quot;</span>,<span class="ruby-identifier">code</span>,<span class="ruby-identifier">v1</span>])
+175:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@arbitmenA!</span>=<span class="ruby-keyword kw">nil</span>
+176:       <span class="ruby-ivar">@arbitmansign</span>=<span class="ruby-ivar">@arbitmenA</span>.<span class="ruby-identifier">arbitmansign</span>
+177:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@arbitmansign!</span>=<span class="ruby-keyword kw">nil</span>
+178:         <span class="ruby-ivar">@ab</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0015' and state='Y' and data_val='#{@arbitmansign}'&quot;</span>)
+179:         <span class="ruby-ivar">@abc</span>=<span class="ruby-ivar">@ab</span>.<span class="ruby-identifier">data_text</span>
+180:       <span class="ruby-keyword kw">else</span>
+181:         <span class="ruby-ivar">@abc</span>=<span class="ruby-value str">&quot;&quot;</span>
+182:       <span class="ruby-keyword kw">end</span>
+183:     <span class="ruby-keyword kw">else</span>
+184:       <span class="ruby-ivar">@abc</span>=<span class="ruby-value str">&quot;&quot;</span>
+185:     <span class="ruby-keyword kw">end</span>
+186:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@abc</span>
+187:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002078" class="method-detail">
+        <a name="M002078"></a>
+
+        <div class="method-heading">
+          <a href="#M002078" class="method-signature">
+          <span class="method-name">get_date</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+反请求审批表
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002078-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002078-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 235</span>
+235:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_date</span>(<span class="ruby-identifier">code</span>)
+236:     <span class="ruby-ivar">@resp</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and recevice_code=? and partytype='2'&quot;</span>,<span class="ruby-identifier">code</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>)
+237:     <span class="ruby-identifier">str6</span>=<span class="ruby-value str">&quot;&quot;</span>
+238:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@resp!</span>=<span class="ruby-keyword kw">nil</span>
+239:       <span class="ruby-identifier">arr_date</span> = <span class="ruby-ivar">@resp</span>.<span class="ruby-identifier">dt</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;-&quot;</span>)
+240:       <span class="ruby-identifier">arr_date</span>[<span class="ruby-value">1</span>]=<span class="ruby-identifier">arr_date</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+241:       <span class="ruby-identifier">arr_date</span>[<span class="ruby-value">2</span>]=<span class="ruby-identifier">arr_date</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+242:       <span class="ruby-identifier">str6</span>=<span class="ruby-identifier">arr_date</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;年&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">arr_date</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">+</span><span class="ruby-value str">&quot;月&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">arr_date</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">+</span><span class="ruby-value str">&quot;日&quot;</span>
+243:     <span class="ruby-keyword kw">else</span>
+244:       <span class="ruby-identifier">str6</span>=<span class="ruby-value str">&quot;______年___月___日&quot;</span>
+245:     <span class="ruby-keyword kw">end</span>
+246:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str6</span>
+247:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002079" class="method-detail">
+        <a name="M002079"></a>
+
+        <div class="method-heading">
+          <a href="#M002079" class="method-signature">
+          <span class="method-name">get_dear_money</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+反请求
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002079-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002079-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 249</span>
+249:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_dear_money</span>(<span class="ruby-identifier">code</span>)
+250:     <span class="ruby-ivar">@account2</span> = <span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;recevice_code= ? and used='Y' and amount_typ= '0001' and typ= '0001' and partytype='2'&quot;</span>,<span class="ruby-identifier">code</span>],<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;sum(f_money) as f_money,currency&quot;</span>,<span class="ruby-identifier">:group=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;currency&quot;</span>)
+251:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@account2</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+252:       <span class="ruby-ivar">@d_m</span>=<span class="ruby-value str">&quot;&quot;</span>
+253:       <span class="ruby-ivar">@account2</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ac</span><span class="ruby-operator">|</span>
+254:         <span class="ruby-ivar">@d_m</span> = <span class="ruby-ivar">@d_m</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">get_sign</span>(<span class="ruby-identifier">ac</span>.<span class="ruby-identifier">currency</span>) <span class="ruby-operator">+</span> <span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">compart1</span>(<span class="ruby-identifier">ac</span>.<span class="ruby-identifier">f_money</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;  &quot;</span>
+255:       <span class="ruby-keyword kw">end</span>
+256:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@d_m!</span>=<span class="ruby-value str">&quot;&quot;</span>
+257:         <span class="ruby-ivar">@d_m</span> =<span class="ruby-ivar">@d_m</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-ivar">@d_m</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>)
+258:       <span class="ruby-keyword kw">end</span>
+259:     <span class="ruby-keyword kw">else</span>
+260:       <span class="ruby-ivar">@d_m</span>=<span class="ruby-value str">&quot;&quot;</span>
+261:     <span class="ruby-keyword kw">end</span>
+262:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@d_m</span>
+263:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002077" class="method-detail">
+        <a name="M002077"></a>
+
+        <div class="method-heading">
+          <a href="#M002077" class="method-signature">
+          <span class="method-name">get_end_day</span><span class="method-args">(code,nowdate)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+结案时间
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002077-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002077-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 228</span>
+228:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_end_day</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">nowdate</span>)
+229:     <span class="ruby-identifier">cend</span>=<span class="ruby-constant">TbCaseendbook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and recevice_code=?&quot;</span>,<span class="ruby-identifier">code</span>])
+230:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cend!</span>=<span class="ruby-keyword kw">nil</span>
+231:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cend</span>.<span class="ruby-identifier">decideDate</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">nowdate</span>.<span class="ruby-identifier">to_date</span>
+232:     <span class="ruby-keyword kw">end</span>
+233:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002080" class="method-detail">
+        <a name="M002080"></a>
+
+        <div class="method-heading">
+          <a href="#M002080" class="method-signature">
+          <span class="method-name">get_indefinite_money</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+不明确争议金额
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002080-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002080-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 265</span>
+265:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_indefinite_money</span>(<span class="ruby-identifier">code</span>)
+266:     <span class="ruby-ivar">@account4</span> = <span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;recevice_code= ? and used='Y' and amount_typ= '0002' and typ= '0001' and partytype='2'&quot;</span>,<span class="ruby-identifier">code</span>],<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;sum(f_money) as f_money,currency&quot;</span>,<span class="ruby-identifier">:group=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;currency&quot;</span>)
+267:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@account4</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+268:       <span class="ruby-ivar">@d_m2</span>=<span class="ruby-value str">&quot;&quot;</span>
+269:       <span class="ruby-ivar">@account4</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ac</span><span class="ruby-operator">|</span>
+270:         <span class="ruby-ivar">@d_m2</span> = <span class="ruby-ivar">@d_m2</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">get_sign</span>(<span class="ruby-identifier">ac</span>.<span class="ruby-identifier">currency</span>)<span class="ruby-operator">+</span> <span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">compart1</span>(<span class="ruby-identifier">ac</span>.<span class="ruby-identifier">f_money</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;  &quot;</span>
+271:       <span class="ruby-keyword kw">end</span>
+272:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@d_m2!</span>=<span class="ruby-value str">&quot;&quot;</span>
+273:         <span class="ruby-ivar">@d_m2</span> =<span class="ruby-ivar">@d_m2</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-ivar">@d_m2</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>)
+274:       <span class="ruby-keyword kw">end</span>
+275:     <span class="ruby-keyword kw">else</span>
+276:       <span class="ruby-ivar">@d_m2</span>=<span class="ruby-value str">&quot;&quot;</span>
+277:     <span class="ruby-keyword kw">end</span>
+278:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@d_m2</span>
+279:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002081" class="method-detail">
+        <a name="M002081"></a>
+
+        <div class="method-heading">
+          <a href="#M002081" class="method-signature">
+          <span class="method-name">get_litigation_fee</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+立案费/受理费 0002
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002081-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002081-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 281</span>
+281:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_litigation_fee</span>(<span class="ruby-identifier">code</span>)
+282:     <span class="ruby-ivar">@litigation</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(s.rmb_money) as aa from tb_case_amounts as a,tb_should_charges as s where s.used='Y' and a.used='Y'
+283:       and a.recevice_code='#{code}' and a.recevice_code=s.recevice_code and a.id=s.case_amount_id and
+284:       s.typ='0002' and  a.typ='0001' and a.partytype='2'&quot;</span>)
+285:     <span class="ruby-ivar">@litigation</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@litigation</span>)
+286:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@litigation!</span>=<span class="ruby-keyword kw">nil</span>
+287:       <span class="ruby-ivar">@litigation</span>=<span class="ruby-ivar">@litigation</span>.<span class="ruby-identifier">aa</span>
+288:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@litigation!</span>=<span class="ruby-keyword kw">nil</span>
+289:         <span class="ruby-ivar">@litigation</span>=<span class="ruby-ivar">@litigation</span>.<span class="ruby-identifier">to_f</span>
+290:         <span class="ruby-ivar">@mm</span>=<span class="ruby-ivar">@litigation</span>
+291:       <span class="ruby-keyword kw">else</span>
+292:         <span class="ruby-ivar">@mm</span>=<span class="ruby-value">0</span>
+293:       <span class="ruby-keyword kw">end</span>
+294:     <span class="ruby-keyword kw">else</span>
+295:       <span class="ruby-ivar">@mm</span>=<span class="ruby-value">0</span>
+296:     <span class="ruby-keyword kw">end</span>
+297:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@mm</span>
+298:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002083" class="method-detail">
+        <a name="M002083"></a>
+
+        <div class="method-heading">
+          <a href="#M002083" class="method-signature">
+          <span class="method-name">get_litigation_fee2</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+无明确争议金额： 立案费/受理费
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002083-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002083-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 320</span>
+320:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_litigation_fee2</span>(<span class="ruby-identifier">code</span>)
+321:     <span class="ruby-ivar">@litigation2</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(rmb_money) as aa2 from tb_should_charges where used='Y'
+322:       and recevice_code='#{code}' and typ='0005' and payment='0002'&quot;</span>)
+323:     <span class="ruby-ivar">@litigation2</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@litigation2</span>).<span class="ruby-identifier">aa2</span>
+324:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@litigation2!</span>=<span class="ruby-keyword kw">nil</span>
+325:       <span class="ruby-ivar">@litigation2</span>=<span class="ruby-ivar">@litigation2</span>.<span class="ruby-identifier">to_f</span>
+326:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@litigation2</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+327:         <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+328:       <span class="ruby-keyword kw">else</span>
+329:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@litigation2</span>
+330:       <span class="ruby-keyword kw">end</span>
+331:     <span class="ruby-keyword kw">else</span>
+332:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+333:     <span class="ruby-keyword kw">end</span>
+334:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002072" class="method-detail">
+        <a name="M002072"></a>
+
+        <div class="method-heading">
+          <a href="#M002072" class="method-signature">
+          <span class="method-name">get_parties</span><span class="method-args">(code,p1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+当事人
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002072-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002072-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 134</span>
+134:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_parties</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">p1</span>)
+135:     <span class="ruby-ivar">@party</span>=<span class="ruby-constant">TbParty</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;used='Y' and partytype=#{p1} and recevice_code='#{code}'&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>)
+136:     <span class="ruby-identifier">stra</span> = <span class="ruby-value str">&quot;&quot;</span>
+137:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">empty?</span>
+138:     <span class="ruby-keyword kw">else</span>
+139:       <span class="ruby-identifier">stra</span> = <span class="ruby-value str">&quot;&quot;</span>
+140:       <span class="ruby-identifier">k</span> = <span class="ruby-value">1</span>
+141:       <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pa</span><span class="ruby-operator">|</span>
+142:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>
+143:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p1</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>
+144:             <span class="ruby-identifier">stra</span> = <span class="ruby-identifier">stra</span><span class="ruby-operator">+</span><span class="ruby-node">&quot; &lt;br&gt; 申请人:#{pa.partyname}&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;、&quot;</span>
+145:           <span class="ruby-keyword kw">else</span>
+146:             <span class="ruby-identifier">stra</span> = <span class="ruby-identifier">stra</span><span class="ruby-operator">+</span><span class="ruby-node">&quot; &lt;br&gt; 被申请人:#{pa.partyname}&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;、&quot;</span>
+147:           <span class="ruby-keyword kw">end</span>
+148:         <span class="ruby-keyword kw">else</span>
+149:           <span class="ruby-identifier">stra</span> = <span class="ruby-identifier">stra</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;#{pa.partyname}&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;、&quot;</span>
+150:         <span class="ruby-keyword kw">end</span>
+151:         <span class="ruby-identifier">k</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+152:       <span class="ruby-keyword kw">end</span>
+153:       <span class="ruby-identifier">stra</span> = <span class="ruby-identifier">stra</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-identifier">stra</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">3</span>)
+154:     <span class="ruby-keyword kw">end</span>
+155:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">stra</span>
+156:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002082" class="method-detail">
+        <a name="M002082"></a>
+
+        <div class="method-heading">
+          <a href="#M002082" class="method-signature">
+          <span class="method-name">get_processing_fee</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+仲裁费/处理费
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002082-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002082-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 300</span>
+300:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_processing_fee</span>(<span class="ruby-identifier">code</span>)
+301:     <span class="ruby-ivar">@processing</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(s.rmb_money) as cc from tb_case_amounts as a,tb_should_charges as s where s.used='Y' and a.used='Y'
+302:       and a.recevice_code='#{code}' and a.recevice_code=s.recevice_code and a.id=s.case_amount_id and
+303:       s.typ='0003' and  a.typ='0001' and a.partytype='2'&quot;</span>)
+304:     <span class="ruby-ivar">@processing</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@processing</span>)
+305:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@processing!</span>=<span class="ruby-keyword kw">nil</span>
+306:       <span class="ruby-ivar">@processing</span>=<span class="ruby-ivar">@processing</span>.<span class="ruby-identifier">cc</span>
+307:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@processing!</span>=<span class="ruby-keyword kw">nil</span>
+308:         <span class="ruby-ivar">@processing</span>=<span class="ruby-ivar">@processing</span>.<span class="ruby-identifier">to_f</span>
+309:         <span class="ruby-ivar">@mmm</span>=<span class="ruby-ivar">@processing</span>
+310:       <span class="ruby-keyword kw">else</span>
+311:         <span class="ruby-ivar">@mmm</span>=<span class="ruby-value">0</span>
+312:       <span class="ruby-keyword kw">end</span>
+313:     <span class="ruby-keyword kw">else</span>
+314:       <span class="ruby-ivar">@mmm</span>=<span class="ruby-value">0</span>
+315:     <span class="ruby-keyword kw">end</span>
+316:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@mmm</span>
+317:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002084" class="method-detail">
+        <a name="M002084"></a>
+
+        <div class="method-heading">
+          <a href="#M002084" class="method-signature">
+          <span class="method-name">get_processing_fee2</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+无明确金额的 处理费/仲裁费
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002084-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002084-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 336</span>
+336:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_processing_fee2</span>(<span class="ruby-identifier">code</span>)
+337:     <span class="ruby-ivar">@processing2</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(rmb_money) as cc2 from tb_should_charges where used='Y'
+338:       and recevice_code='#{code}' and typ='0006' and payment='0002'&quot;</span>)
+339:     <span class="ruby-ivar">@processing2</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@processing2</span>).<span class="ruby-identifier">cc2</span>
+340:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@processing2!</span>=<span class="ruby-keyword kw">nil</span>
+341:       <span class="ruby-ivar">@processing2</span>=<span class="ruby-ivar">@processing2</span>.<span class="ruby-identifier">to_f</span>
+342:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@processing2</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+343:         <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+344:       <span class="ruby-keyword kw">else</span>
+345:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@processing2</span>
+346:       <span class="ruby-keyword kw">end</span>
+347:     <span class="ruby-keyword kw">else</span>
+348:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+349:     <span class="ruby-keyword kw">end</span>
+350:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002085" class="method-detail">
+        <a name="M002085"></a>
+
+        <div class="method-heading">
+          <a href="#M002085" class="method-signature">
+          <span class="method-name">get_sign</span><span class="method-args">(n1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+金额符号
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002085-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002085-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 352</span>
+352:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_sign</span>(<span class="ruby-identifier">n1</span>)
+353:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n1</span><span class="ruby-operator">==</span><span class="ruby-value str">'0001'</span>
+354:       <span class="ruby-identifier">m</span> = <span class="ruby-value str">&quot;￥&quot;</span>
+355:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">n1</span><span class="ruby-operator">==</span><span class="ruby-value str">'0002'</span>
+356:       <span class="ruby-identifier">m</span> = <span class="ruby-value str">&quot;USD&quot;</span>
+357:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">n1</span><span class="ruby-operator">==</span><span class="ruby-value str">'0003'</span>
+358:       <span class="ruby-identifier">m</span> = <span class="ruby-value str">&quot;HKD&quot;</span>
+359:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">n1</span><span class="ruby-operator">==</span><span class="ruby-value str">'0005'</span>
+360:       <span class="ruby-identifier">m</span> = <span class="ruby-value str">&quot;EUR&quot;</span>
+361:     <span class="ruby-keyword kw">else</span>
+362:       <span class="ruby-identifier">m</span> = <span class="ruby-constant">Money</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and code=?&quot;</span>,<span class="ruby-identifier">n1</span>]).<span class="ruby-identifier">name</span>
+363:     <span class="ruby-keyword kw">end</span>
+364:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">m</span>
+365:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002075" class="method-detail">
+        <a name="M002075"></a>
+
+        <div class="method-heading">
+          <a href="#M002075" class="method-signature">
+          <span class="method-name">getd</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+案件时间差显示不同颜色
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002075-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002075-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 189</span>
+189:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">getd</span>(<span class="ruby-identifier">code</span>)
+190:     <span class="ruby-ivar">@d1</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>     <span class="ruby-comment cmt">#延期审限的日期 - 当天日期</span>
+191:     <span class="ruby-identifier">c</span> = <span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">code</span>)
+192:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">finally_limit_dat</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#审限日期</span>
+193:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">finally_limit_dat</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@d1</span>
+194:     <span class="ruby-keyword kw">else</span>
+195:       <span class="ruby-keyword kw">return</span> <span class="ruby-value str">&quot;&quot;</span>
+196:     <span class="ruby-keyword kw">end</span>
+197:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002063" class="method-detail">
+        <a name="M002063"></a>
+
+        <div class="method-heading">
+          <a href="#M002063" class="method-signature">
+          <span class="method-name">n_to_p</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+当事人个数
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002063-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 51</span>
+51:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">n_to_p</span>(<span class="ruby-identifier">v</span>)
+52:     <span class="ruby-ivar">@nc</span>={<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;两&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;四&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;五&quot;</span>,<span class="ruby-value str">&quot;6&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;六&quot;</span>,<span class="ruby-value str">&quot;7&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;七&quot;</span>,<span class="ruby-value str">&quot;8&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;八&quot;</span>,<span class="ruby-value str">&quot;9&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;九&quot;</span>,<span class="ruby-value str">&quot;10&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十&quot;</span>,
+53:       <span class="ruby-value str">&quot;11&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十一&quot;</span>,<span class="ruby-value str">&quot;12&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十二&quot;</span>,<span class="ruby-value str">&quot;13&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十三&quot;</span>,<span class="ruby-value str">&quot;14&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十四&quot;</span>,<span class="ruby-value str">&quot;15&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十五&quot;</span>,<span class="ruby-value str">&quot;16&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十六&quot;</span>,<span class="ruby-value str">&quot;17&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十七&quot;</span>,<span class="ruby-value str">&quot;18&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十八&quot;</span>,<span class="ruby-value str">&quot;19&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十九&quot;</span>,<span class="ruby-value str">&quot;20&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十&quot;</span>,
+54:       <span class="ruby-value str">&quot;21&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十一&quot;</span>,<span class="ruby-value str">&quot;22&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十二&quot;</span>,<span class="ruby-value str">&quot;23&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十三&quot;</span>,<span class="ruby-value str">&quot;24&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十四&quot;</span>,<span class="ruby-value str">&quot;25&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十五&quot;</span>,<span class="ruby-value str">&quot;26&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十六&quot;</span>,<span class="ruby-value str">&quot;27&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十七&quot;</span>,<span class="ruby-value str">&quot;28&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十八&quot;</span>,<span class="ruby-value str">&quot;29&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十九&quot;</span>,<span class="ruby-value str">&quot;30&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三十&quot;</span>,<span class="ruby-value str">&quot;31&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三十一&quot;</span>}
+55:     <span class="ruby-identifier">v</span>=<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>
+56:     <span class="ruby-identifier">rrr</span>=<span class="ruby-ivar">@nc</span>[<span class="ruby-identifier">v</span>]
+57:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+58:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002067" class="method-detail">
+        <a name="M002067"></a>
+
+        <div class="method-heading">
+          <a href="#M002067" class="method-signature">
+          <span class="method-name">get_first_record</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002067-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 73</span>
+73:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_first_record</span>(<span class="ruby-identifier">obj</span>)
+74:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">empty?</span>
+75:       <span class="ruby-identifier">rrr</span>=<span class="ruby-keyword kw">nil</span>
+76:     <span class="ruby-keyword kw">else</span>
+77:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">ob</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">obj</span>
+78:         <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">ob</span>
+79:         <span class="ruby-keyword kw">break</span>;
+80:       <span class="ruby-keyword kw">end</span>
+81:     <span class="ruby-keyword kw">end</span>
+82:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+83:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002076" class="method-detail">
+        <a name="M002076"></a>
+
+        <div class="method-heading">
+          <a href="#M002076" class="method-signature">
+          <span class="method-name">get_grade</span><span class="method-args">(grade)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <pre>
+    @casedely=TbCasedelay.find(:first,:conditions=&gt;[&quot;recevice_code=?&quot;,code],:order=&gt;&quot;id desc&quot;)
+    if @casedely!=nil
+      return @casedely.delayDate - @d1
+    else
+      if c.finally_limit_dat!=nil  #初始审限日期 - 当天日期
+        return c.finally_limit_dat - @d1
+      else
+        return &quot;&quot;
+      end
+    end
+</pre>
+<p>
+取档次
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002076-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002076-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 209</span>
+209:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_grade</span>(<span class="ruby-identifier">grade</span>)
+210:     <span class="ruby-identifier">r</span>=<span class="ruby-value str">''</span>
+211:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">grade</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">grade</span><span class="ruby-operator">==</span><span class="ruby-value str">''</span>
+212:       <span class="ruby-identifier">r</span>=<span class="ruby-value str">'&amp;nbsp;'</span>
+213:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">r</span>
+214:     <span class="ruby-keyword kw">else</span>
+215:       <span class="ruby-identifier">r</span>=<span class="ruby-value str">''</span>
+216:       <span class="ruby-identifier">g</span>=<span class="ruby-identifier">grade</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot; &quot;</span>)
+217:       <span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>
+218:       <span class="ruby-identifier">g</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">gr</span><span class="ruby-operator">|</span>
+219:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">g</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+220:           <span class="ruby-identifier">r</span>=<span class="ruby-identifier">r</span><span class="ruby-operator">+</span> <span class="ruby-value str">' '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">gr</span>
+221:         <span class="ruby-keyword kw">end</span>
+222:         <span class="ruby-identifier">i</span>=<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+223:       }
+224:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">r</span>
+225:     <span class="ruby-keyword kw">end</span>
+226:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002068" class="method-detail">
+        <a name="M002068"></a>
+
+        <div class="method-heading">
+          <a href="#M002068" class="method-signature">
+          <span class="method-name">get_last_record</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002068-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 84</span>
+84:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_last_record</span>(<span class="ruby-identifier">obj</span>)
+85:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">empty?</span>
+86:       <span class="ruby-identifier">rrr</span>=<span class="ruby-keyword kw">nil</span>
+87:     <span class="ruby-keyword kw">else</span>
+88:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">ob</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">obj</span>
+89:         <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">ob</span>
+90:       <span class="ruby-keyword kw">end</span>
+91:     <span class="ruby-keyword kw">end</span>
+92:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+93:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002061" class="method-detail">
+        <a name="M002061"></a>
+
+        <div class="method-heading">
+          <a href="#M002061" class="method-signature">
+          <span class="method-name">n_to_c</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002061-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 30</span>
+30:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">n_to_c</span>(<span class="ruby-identifier">v</span>)
+31:     <span class="ruby-ivar">@nc</span>={<span class="ruby-value str">&quot;0&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;○&quot;</span>,<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;一&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;四&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;五&quot;</span>,<span class="ruby-value str">&quot;6&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;六&quot;</span>,<span class="ruby-value str">&quot;7&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;七&quot;</span>,<span class="ruby-value str">&quot;8&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;八&quot;</span>,<span class="ruby-value str">&quot;9&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;九&quot;</span>,}
+32:     <span class="ruby-identifier">v</span>=<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>
+33:     <span class="ruby-identifier">rrr</span>=<span class="ruby-value str">&quot;&quot;</span>
+34:     <span class="ruby-identifier">h</span>=<span class="ruby-identifier">v</span>.<span class="ruby-identifier">size</span>
+35:     <span class="ruby-identifier">hh</span>=<span class="ruby-value">0</span>
+36:     <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">hh</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">h</span>)
+37:       <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">rrr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@nc</span>[<span class="ruby-identifier">v</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-identifier">hh</span>,<span class="ruby-value">1</span>)]
+38:       <span class="ruby-identifier">hh</span>=<span class="ruby-identifier">hh</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> 
+39:     <span class="ruby-keyword kw">end</span>
+40:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+41:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002062" class="method-detail">
+        <a name="M002062"></a>
+
+        <div class="method-heading">
+          <a href="#M002062" class="method-signature">
+          <span class="method-name">n_to_md</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002062-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 42</span>
+42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">n_to_md</span>(<span class="ruby-identifier">v</span>)
+43:     <span class="ruby-ivar">@nc</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;一&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;四&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;五&quot;</span>,<span class="ruby-value str">&quot;6&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;六&quot;</span>,<span class="ruby-value str">&quot;7&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;七&quot;</span>,<span class="ruby-value str">&quot;8&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;八&quot;</span>,<span class="ruby-value str">&quot;9&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;九&quot;</span>,<span class="ruby-value str">&quot;10&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十&quot;</span>,
+44:       <span class="ruby-value str">&quot;11&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十一&quot;</span>,<span class="ruby-value str">&quot;12&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十二&quot;</span>,<span class="ruby-value str">&quot;13&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十三&quot;</span>,<span class="ruby-value str">&quot;14&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十四&quot;</span>,<span class="ruby-value str">&quot;15&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十五&quot;</span>,<span class="ruby-value str">&quot;16&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十六&quot;</span>,<span class="ruby-value str">&quot;17&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十七&quot;</span>,<span class="ruby-value str">&quot;18&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十八&quot;</span>,<span class="ruby-value str">&quot;19&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;十九&quot;</span>,<span class="ruby-value str">&quot;20&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十&quot;</span>,
+45:       <span class="ruby-value str">&quot;21&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十一&quot;</span>,<span class="ruby-value str">&quot;22&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十二&quot;</span>,<span class="ruby-value str">&quot;23&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十三&quot;</span>,<span class="ruby-value str">&quot;24&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十四&quot;</span>,<span class="ruby-value str">&quot;25&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十五&quot;</span>,<span class="ruby-value str">&quot;26&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十六&quot;</span>,<span class="ruby-value str">&quot;27&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十七&quot;</span>,<span class="ruby-value str">&quot;28&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十八&quot;</span>,<span class="ruby-value str">&quot;29&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;二十九&quot;</span>,<span class="ruby-value str">&quot;30&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三十&quot;</span>,<span class="ruby-value str">&quot;31&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;三十一&quot;</span>}
+46:     <span class="ruby-identifier">v</span>=<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>
+47:     <span class="ruby-identifier">rrr</span>=<span class="ruby-ivar">@nc</span>[<span class="ruby-identifier">v</span>]
+48:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+49:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002060" class="method-detail">
+        <a name="M002060"></a>
+
+        <div class="method-heading">
+          <a href="#M002060" class="method-signature">
+          <span class="method-name">p_en</span><span class="method-args">(s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002060-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">p_en</span>(<span class="ruby-identifier">s</span>)
+22:     <span class="ruby-identifier">s</span>=<span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">s</span>)
+23:     <span class="ruby-identifier">a</span>=<span class="ruby-value str">&quot;aeb5660fc2140aec3585&quot;</span>
+24:     <span class="ruby-identifier">b</span>=<span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>().<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">:long</span>))
+25:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;b04c54574d18c28d46e6&quot;</span>
+26:     <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>
+27:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+28:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002059" class="method-detail">
+        <a name="M002059"></a>
+
+        <div class="method-heading">
+          <a href="#M002059" class="method-signature">
+          <span class="method-name">put_to</span><span class="method-args">(a,b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+返回被a覆盖后的b
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002059-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 8</span>
+ 8:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">put_to</span>(<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>)
+ 9:     <span class="ruby-identifier">r</span> = {}
+10:     <span class="ruby-identifier">h</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">attributes</span>
+11:     <span class="ruby-identifier">b</span>.<span class="ruby-identifier">attribute_names</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+12:       <span class="ruby-identifier">v</span> = <span class="ruby-identifier">h</span>[<span class="ruby-identifier">f</span>]
+13:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">f!</span>=<span class="ruby-value str">&quot;id&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>
+14:         <span class="ruby-identifier">r</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v</span>})
+15:       <span class="ruby-keyword kw">end</span>
+16:     }
+17:     <span class="ruby-identifier">b</span>.<span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">r</span>
+18:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">b</span>
+19:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002064" class="method-detail">
+        <a name="M002064"></a>
+
+        <div class="method-heading">
+          <a href="#M002064" class="method-signature">
+          <span class="method-name">round_0</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002064-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002064-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 59</span>
+59:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">round_0</span>(<span class="ruby-identifier">v</span>)
+60:     <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">v</span>
+61:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>.<span class="ruby-identifier">round</span>
+62:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002065" class="method-detail">
+        <a name="M002065"></a>
+
+        <div class="method-heading">
+          <a href="#M002065" class="method-signature">
+          <span class="method-name">round_2</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002065-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 63</span>
+63:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">round_2</span>(<span class="ruby-identifier">v</span>)
+64:     <span class="ruby-identifier">rrr</span>=(<span class="ruby-identifier">v</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>
+65:     <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">rrr</span> <span class="ruby-operator">/</span> <span class="ruby-value">100.00</span>
+66:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+67:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002066" class="method-detail">
+        <a name="M002066"></a>
+
+        <div class="method-heading">
+          <a href="#M002066" class="method-signature">
+          <span class="method-name">round_3</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002066-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 68</span>
+68:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">round_3</span>(<span class="ruby-identifier">v</span>)
+69:     <span class="ruby-identifier">rrr</span>=(<span class="ruby-identifier">v</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>).<span class="ruby-identifier">round</span>
+70:     <span class="ruby-identifier">rrr</span>=<span class="ruby-identifier">rrr</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000.00</span>
+71:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rrr</span>
+72:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002069" class="method-detail">
+        <a name="M002069"></a>
+
+        <div class="method-heading">
+          <a href="#M002069" class="method-signature">
+          <span class="method-name">sql_check</span><span class="method-args">(sq)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002069-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 94</span>
+ 94:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sql_check</span>(<span class="ruby-identifier">sq</span>)
+ 95:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq!</span>=<span class="ruby-keyword kw">nil</span>
+ 96:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">to_s</span>
+ 97:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">downcase</span>
+ 98:       <span class="ruby-identifier">ss</span>=[<span class="ruby-value str">&quot;not&quot;</span>,<span class="ruby-value str">&quot;and&quot;</span>,<span class="ruby-value str">&quot;or&quot;</span>,<span class="ruby-value str">&quot;exec&quot;</span>,<span class="ruby-value str">&quot;insert&quot;</span>,<span class="ruby-value str">&quot;select&quot;</span>,<span class="ruby-value str">&quot;delete&quot;</span>,<span class="ruby-value str">&quot;update&quot;</span>,<span class="ruby-value str">&quot;count&quot;</span>,<span class="ruby-value str">&quot;*&quot;</span>,<span class="ruby-value str">&quot;%&quot;</span>,<span class="ruby-value str">&quot;chr&quot;</span>,<span class="ruby-value str">&quot;mid&quot;</span>,<span class="ruby-value str">&quot;master&quot;</span>,<span class="ruby-value str">&quot;truncate&quot;</span>,<span class="ruby-value str">&quot;char&quot;</span>,<span class="ruby-value str">&quot;declare&quot;</span>]
+ 99:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">ss</span>
+100:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">s</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+101:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+102:         <span class="ruby-keyword kw">end</span>
+103:       <span class="ruby-keyword kw">end</span>  
+104:     <span class="ruby-keyword kw">end</span>
+105:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002070" class="method-detail">
+        <a name="M002070"></a>
+
+        <div class="method-heading">
+          <a href="#M002070" class="method-signature">
+          <span class="method-name">sql_check_2</span><span class="method-args">(sq)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002070-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 107</span>
+107:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sql_check_2</span>(<span class="ruby-identifier">sq</span>)
+108:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq!</span>=<span class="ruby-keyword kw">nil</span>
+109:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">to_s</span>
+110:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">downcase</span>
+111:       <span class="ruby-identifier">ss</span>=[<span class="ruby-value str">&quot;exec&quot;</span>,<span class="ruby-value str">&quot;insert&quot;</span>,<span class="ruby-value str">&quot;select&quot;</span>,<span class="ruby-value str">&quot;delete&quot;</span>,<span class="ruby-value str">&quot;update&quot;</span>,<span class="ruby-value str">&quot;count&quot;</span>,<span class="ruby-value str">&quot;*&quot;</span>,<span class="ruby-value str">&quot;%&quot;</span>,<span class="ruby-value str">&quot;chr&quot;</span>,<span class="ruby-value str">&quot;mid&quot;</span>,<span class="ruby-value str">&quot;master&quot;</span>,<span class="ruby-value str">&quot;truncate&quot;</span>,<span class="ruby-value str">&quot;char&quot;</span>,<span class="ruby-value str">&quot;declare&quot;</span>]
+112:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">ss</span>
+113:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">s</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+114:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+115:         <span class="ruby-keyword kw">end</span>
+116:       <span class="ruby-keyword kw">end</span> 
+117:     <span class="ruby-keyword kw">end</span>    
+118:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M002071" class="method-detail">
+        <a name="M002071"></a>
+
+        <div class="method-heading">
+          <a href="#M002071" class="method-signature">
+          <span class="method-name">sql_check_3</span><span class="method-args">(sq)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M002071-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M002071-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/pub_tool.rb, line 120</span>
+120:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">sq</span>)
+121:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq!</span>=<span class="ruby-keyword kw">nil</span>
+122:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">to_s</span>
+123:       <span class="ruby-identifier">sq</span>=<span class="ruby-identifier">sq</span>.<span class="ruby-identifier">downcase</span>
+124:       <span class="ruby-identifier">ss</span>=[<span class="ruby-value str">&quot;exec&quot;</span>,<span class="ruby-value str">&quot;insert&quot;</span>,<span class="ruby-value str">&quot;delete&quot;</span>,<span class="ruby-value str">&quot;update&quot;</span>,<span class="ruby-value str">&quot;master&quot;</span>,<span class="ruby-value str">&quot;truncate&quot;</span>,<span class="ruby-value str">&quot;declare&quot;</span>]
+125:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">ss</span>
+126:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sq</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">s</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+127:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+128:         <span class="ruby-keyword kw">end</span>
+129:       <span class="ruby-keyword kw">end</span>
+130:     <span class="ruby-keyword kw">end</span>
+131:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

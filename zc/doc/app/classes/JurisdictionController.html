@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: JurisdictionController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">JurisdictionController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/jurisdiction_controller_rb.html">
+                app/controllers/jurisdiction_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000820">file_create</a>&nbsp;&nbsp;
+      <a href="#M000823">file_delete</a>&nbsp;&nbsp;
+      <a href="#M000827">file_destroy</a>&nbsp;&nbsp;
+      <a href="#M000826">file_down</a>&nbsp;&nbsp;
+      <a href="#M000821">file_edit</a>&nbsp;&nbsp;
+      <a href="#M000818">file_list</a>&nbsp;&nbsp;
+      <a href="#M000819">file_new</a>&nbsp;&nbsp;
+      <a href="#M000822">file_update</a>&nbsp;&nbsp;
+      <a href="#M000824">file_upload</a>&nbsp;&nbsp;
+      <a href="#M000825">file_upload_do</a>&nbsp;&nbsp;
+      <a href="#M000812">jurisdiction_create</a>&nbsp;&nbsp;
+      <a href="#M000815">jurisdiction_delete</a>&nbsp;&nbsp;
+      <a href="#M000813">jurisdiction_edit</a>&nbsp;&nbsp;
+      <a href="#M000810">jurisdiction_list</a>&nbsp;&nbsp;
+      <a href="#M000811">jurisdiction_new</a>&nbsp;&nbsp;
+      <a href="#M000814">jurisdiction_update</a>&nbsp;&nbsp;
+      <a href="#M000816">remind_change</a>&nbsp;&nbsp;
+      <a href="#M000817">remind_update</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000820" class="method-detail">
+        <a name="M000820"></a>
+
+        <div class="method-heading">
+          <a href="#M000820" class="method-signature">
+          <span class="method-name">file_create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000820-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000820-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 138</span>
+138:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_create</span>
+139:     <span class="ruby-identifier">file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:file</span>])
+140:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">recevice_code</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+141:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">typ</span> = <span class="ruby-value str">&quot;0006&quot;</span>
+142:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">p_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+143:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u</span> = <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+144:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u_t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+145:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">save</span>
+146:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;创建成功&quot;</span>
+147:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;file_list&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>], <span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+148:     <span class="ruby-keyword kw">else</span>
+149:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;创建失败&quot;</span>
+150:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;file_new&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>], <span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+151:     <span class="ruby-keyword kw">end</span>
+152:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000823" class="method-detail">
+        <a name="M000823"></a>
+
+        <div class="method-heading">
+          <a href="#M000823" class="method-signature">
+          <span class="method-name">file_delete</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000823-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000823-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 171</span>
+171:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_delete</span>
+172:     <span class="ruby-identifier">file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+173:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">used</span> = <span class="ruby-value str">&quot;N&quot;</span>
+174:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u</span> = <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+175:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u_t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+176:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">save</span>
+177:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">file</span>.<span class="ruby-identifier">book_name</span>.<span class="ruby-identifier">blank?</span>
+178:         <span class="ruby-ivar">@yea</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+179:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{file.recevice_code}/#{file.book_name}&quot;</span>,<span class="ruby-value str">&quot;w+&quot;</span>){}
+180:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{file.recevice_code}/#{file.book_name}&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+181:           <span class="ruby-identifier">file</span>.<span class="ruby-identifier">book_u</span>    = <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+182:           <span class="ruby-identifier">file</span>.<span class="ruby-identifier">book_dat</span>  = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+183:           <span class="ruby-identifier">file</span>.<span class="ruby-identifier">book_name</span> = <span class="ruby-value str">&quot;&quot;</span>
+184:           <span class="ruby-identifier">file</span>.<span class="ruby-identifier">save</span>
+185:         <span class="ruby-keyword kw">end</span>
+186:       <span class="ruby-keyword kw">end</span>
+187: 
+188:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除成功&quot;</span>
+189:     <span class="ruby-keyword kw">else</span>
+190:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除失败&quot;</span>
+191:     <span class="ruby-keyword kw">end</span>
+192:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;file_list&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>],<span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+193:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000827" class="method-detail">
+        <a name="M000827"></a>
+
+        <div class="method-heading">
+          <a href="#M000827" class="method-signature">
+          <span class="method-name">file_destroy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000827-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000827-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 250</span>
+250:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_destroy</span>
+251:     <span class="ruby-ivar">@file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+252:     <span class="ruby-ivar">@yea</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+253:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}/#{@file.book_name}&quot;</span>,<span class="ruby-value str">&quot;w+&quot;</span>){}
+254:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}/#{@file.book_name}&quot;</span>)<span class="ruby-operator">==</span><span class="ruby-value">1</span>
+255:       <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_u</span>    = <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+256:       <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_dat</span>  = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+257:       <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_name</span> = <span class="ruby-value str">&quot;&quot;</span>
+258:       <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">save</span>
+259:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;文件删除成功&quot;</span>
+260:     <span class="ruby-keyword kw">else</span>
+261:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;文件删除失败&quot;</span>
+262:     <span class="ruby-keyword kw">end</span>
+263:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;file_list&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>], <span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+264:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000826" class="method-detail">
+        <a name="M000826"></a>
+
+        <div class="method-heading">
+          <a href="#M000826" class="method-signature">
+          <span class="method-name">file_down</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000826-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000826-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 244</span>
+244:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_down</span>
+245:     <span class="ruby-ivar">@file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+246:     <span class="ruby-ivar">@yea</span> = <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">recevice_code</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+247:     <span class="ruby-identifier">send_file</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}/#{@file.book_name}&quot;</span>)
+248:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000821" class="method-detail">
+        <a name="M000821"></a>
+
+        <div class="method-heading">
+          <a href="#M000821" class="method-signature">
+          <span class="method-name">file_edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000821-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000821-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 154</span>
+154:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_edit</span>
+155:     <span class="ruby-ivar">@file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+156:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000818" class="method-detail">
+        <a name="M000818"></a>
+
+        <div class="method-heading">
+          <a href="#M000818" class="method-signature">
+          <span class="method-name">file_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+合同文件上传下载
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000818-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000818-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 128</span>
+128:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_list</span>
+129:     <span class="ruby-identifier">c</span>=<span class="ruby-node">&quot;recevice_code='#{params[:recevice_code]}' and typ='0006' and used='Y' and p_id='#{params[:p_id]}'&quot;</span>
+130:     <span class="ruby-ivar">@contract</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'id'</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>)
+131:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000819" class="method-detail">
+        <a name="M000819"></a>
+
+        <div class="method-heading">
+          <a href="#M000819" class="method-signature">
+          <span class="method-name">file_new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000819-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000819-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 133</span>
+133:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_new</span>
+134:     <span class="ruby-ivar">@file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">new</span>()
+135:     <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">title</span> = <span class="ruby-value str">&quot;管辖权异议、管辖权决定&quot;</span>
+136:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000822" class="method-detail">
+        <a name="M000822"></a>
+
+        <div class="method-heading">
+          <a href="#M000822" class="method-signature">
+          <span class="method-name">file_update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000822-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000822-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 158</span>
+158:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_update</span>
+159:     <span class="ruby-identifier">file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+160:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u</span> = <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+161:     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">u_t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+162:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:file</span>])
+163:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;修改成功&quot;</span>
+164:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;file_list&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>], <span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+165:     <span class="ruby-keyword kw">else</span>
+166:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;修改失败&quot;</span>
+167:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;fiel_edit&quot;</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]
+168:     <span class="ruby-keyword kw">end</span>
+169:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000824" class="method-detail">
+        <a name="M000824"></a>
+
+        <div class="method-heading">
+          <a href="#M000824" class="method-signature">
+          <span class="method-name">file_upload</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000824-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000824-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 195</span>
+195:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_upload</span>
+196:     <span class="ruby-ivar">@file</span> = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+197:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000825" class="method-detail">
+        <a name="M000825"></a>
+
+        <div class="method-heading">
+          <a href="#M000825" class="method-signature">
+          <span class="method-name">file_upload_do</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000825-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000825-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 199</span>
+199:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_upload_do</span>
+200:     <span class="ruby-ivar">@file</span>    = <span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+201:     <span class="ruby-ivar">@case</span>   = <span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-ivar">@file</span>.<span class="ruby-identifier">recevice_code</span>)
+202:     <span class="ruby-comment cmt">#########################################</span>
+203:     <span class="ruby-ivar">@yea</span>          = <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">recevice_code</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+204:     <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_u</span>   = <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">clerk</span>
+205:     <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_dat</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+206:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;file&quot;</span>].<span class="ruby-identifier">blank?</span>
+207:       <span class="ruby-identifier">f_name</span>         = <span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;file&quot;</span>].<span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;.&quot;</span>).<span class="ruby-identifier">last</span>
+208:     <span class="ruby-keyword kw">end</span>
+209:     <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">book_name</span> = <span class="ruby-node">&quot;#{@file.typ}_#{@file.recevice_code}_contractfile_#{@file.id}.#{f_name}&quot;</span>
+210: 
+211:     <span class="ruby-identifier">utf8_to_gbk</span>  = <span class="ruby-constant">Iconv</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'gbk'</span>,<span class="ruby-value str">'utf-8'</span>)
+212:     <span class="ruby-identifier">gbk_to_utf8</span> = <span class="ruby-constant">Iconv</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'utf-8'</span>,<span class="ruby-value str">'gbk'</span>)
+213: 
+214:     <span class="ruby-identifier">file</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;file&quot;</span>]   <span class="ruby-comment cmt">#获取文档，此处为tempfile类型的</span>
+215:     <span class="ruby-comment cmt">#设置文档保存的路径，自由设置</span>
+216:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs&quot;</span>)
+217:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/&quot;</span>)
+218:     <span class="ruby-keyword kw">end</span>
+219:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}&quot;</span>)
+220:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}&quot;</span>)
+221:     <span class="ruby-keyword kw">end</span>
+222:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}&quot;</span>)
+223:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}&quot;</span>)
+224:     <span class="ruby-keyword kw">end</span>
+225:     <span class="ruby-comment cmt">#读取文档的内容，目前不用编码转换即可正常显示，在存入数据库中时或许涉及到编码转换</span>
+226:     <span class="ruby-keyword kw">begin</span>
+227:       <span class="ruby-identifier">content</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>  <span class="ruby-comment cmt">#gbk_to_utf8.iconv</span>
+228:       <span class="ruby-comment cmt">#新建同名文件，读取修改的文件内容用以覆盖源文件，注意路径要与读取的一致</span>
+229:       <span class="ruby-identifier">f</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@file.recevice_code}/#{@file.book_name}&quot;</span>, <span class="ruby-value str">&quot;wb&quot;</span>)
+230:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">content</span>)
+231:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">close</span>
+232:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">file</span>.<span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">empty?</span>
+233:         <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">save</span>
+234:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;文件上传成功&quot;</span>
+235:       <span class="ruby-keyword kw">else</span>
+236:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;文件上传失败&quot;</span>
+237:       <span class="ruby-keyword kw">end</span>
+238:     <span class="ruby-keyword kw">rescue</span>
+239:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;文件上传失败！&quot;</span>
+240:     <span class="ruby-keyword kw">end</span>
+241:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;file_list&quot;</span>, <span class="ruby-identifier">:recevice_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>],<span class="ruby-identifier">:p_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">p_id</span>
+242:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000812" class="method-detail">
+        <a name="M000812"></a>
+
+        <div class="method-heading">
+          <a href="#M000812" class="method-signature">
+          <span class="method-name">jurisdiction_create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000812-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000812-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 37</span>
+37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_create</span>
+38:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:jurisdiction</span>])
+39:     <span class="ruby-keyword kw">begin</span>
+40:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>]<span class="ruby-operator">!=</span><span class="ruby-value str">''</span>
+41:         <span class="ruby-ivar">@s1</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1</span>)
+42:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@s1</span><span class="ruby-operator">==</span><span class="ruby-value str">'a'</span>
+43:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-value str">'0001'</span> <span class="ruby-comment cmt">#申请人</span>
+44:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@s1</span><span class="ruby-operator">==</span><span class="ruby-value str">'b'</span>
+45:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-value str">'0002'</span> <span class="ruby-comment cmt">#被申请人</span>
+46:         <span class="ruby-keyword kw">else</span>
+47:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-keyword kw">nil</span>
+48:         <span class="ruby-keyword kw">end</span>
+49:         <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">request_man</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+50:       <span class="ruby-keyword kw">end</span>
+51:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]
+52:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:case_code</span>]
+53:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:general_code</span>]
+54:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+55:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+56:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">save</span>
+57:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotSaved</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+58:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;创建失败&quot;</span>
+59:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_new&quot;</span>
+60:     <span class="ruby-keyword kw">else</span>
+61:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;创建成功&quot;</span>
+62:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_list&quot;</span>
+63:     <span class="ruby-keyword kw">end</span>
+64:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000815" class="method-detail">
+        <a name="M000815"></a>
+
+        <div class="method-heading">
+          <a href="#M000815" class="method-signature">
+          <span class="method-name">jurisdiction_delete</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000815-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000815-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 97</span>
+ 97:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_delete</span>
+ 98:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+ 99:     <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">used</span>=<span class="ruby-value str">&quot;N&quot;</span>
+100:     <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+101:     <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+102:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">save</span>
+103:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除成功&quot;</span>
+104:     <span class="ruby-keyword kw">else</span>
+105:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除失败&quot;</span>
+106:     <span class="ruby-keyword kw">end</span>
+107:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_list&quot;</span>
+108:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000813" class="method-detail">
+        <a name="M000813"></a>
+
+        <div class="method-heading">
+          <a href="#M000813" class="method-signature">
+          <span class="method-name">jurisdiction_edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000813-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000813-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_edit</span>
+67:     <span class="ruby-ivar">@recevice_code</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+68:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+69:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000810" class="method-detail">
+        <a name="M000810"></a>
+
+        <div class="method-heading">
+          <a href="#M000810" class="method-signature">
+          <span class="method-name">jurisdiction_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000810-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000810-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 10</span>
+10:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_list</span>
+11:     <span class="ruby-ivar">@e</span>={<span class="ruby-value">1</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;提醒&quot;</span>,<span class="ruby-value">2</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;不提醒&quot;</span>}
+12:     <span class="ruby-ivar">@case</span>=<span class="ruby-keyword kw">nil</span><span class="ruby-comment cmt">#当前办理案件</span>
+13:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+14:     <span class="ruby-keyword kw">else</span>
+15:       <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>])
+16:       <span class="ruby-identifier">c</span>=<span class="ruby-node">&quot;recevice_code='#{session[:recevice_code]}' and used='Y'&quot;</span>
+17:       <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'registrar,id'</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>)
+18:     <span class="ruby-keyword kw">end</span>
+19:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000811" class="method-detail">
+        <a name="M000811"></a>
+
+        <div class="method-heading">
+          <a href="#M000811" class="method-signature">
+          <span class="method-name">jurisdiction_new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000811-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000811-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_new</span>
+22:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">new</span>()
+23:     <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">request_date</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+24:     <span class="ruby-ivar">@recevice_code</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+25:     <span class="ruby-comment cmt">#        @jurisdiction.transmit_date=Date.today</span>
+26:     <span class="ruby-comment cmt">#        @jurisdiction.receive_date=Date.today</span>
+27:     <span class="ruby-comment cmt">#        @jurisdiction.check_date=Date.today</span>
+28:     <span class="ruby-comment cmt">#        @jurisdiction.idea_date=Date.today</span>
+29:     <span class="ruby-comment cmt">#        @jurisdiction.checkout_date=Date.today</span>
+30:     <span class="ruby-comment cmt">#        @jurisdiction.draft_date=Date.today</span>
+31:     <span class="ruby-comment cmt">#        @jurisdiction.decide_date=Date.today</span>
+32:     <span class="ruby-comment cmt">#        @jurisdiction.parties_date=Date.today</span>
+33:     <span class="ruby-comment cmt">#        @jurisdiction.stop_date=Date.today</span>
+34:     <span class="ruby-comment cmt">#        @jurisdiction.reset_date=Date.today</span>
+35:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000814" class="method-detail">
+        <a name="M000814"></a>
+
+        <div class="method-heading">
+          <a href="#M000814" class="method-signature">
+          <span class="method-name">jurisdiction_update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000814-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000814-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 71</span>
+71:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">jurisdiction_update</span>
+72:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+73:     <span class="ruby-keyword kw">begin</span>
+74:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>]<span class="ruby-operator">!=</span><span class="ruby-value str">''</span>
+75:         <span class="ruby-ivar">@s1</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1</span>)
+76:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@s1</span><span class="ruby-operator">==</span><span class="ruby-value str">'a'</span>
+77:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-value str">'0001'</span> <span class="ruby-comment cmt">#申请人</span>
+78:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@s1</span><span class="ruby-operator">==</span><span class="ruby-value str">'b'</span>
+79:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-value str">'0002'</span> <span class="ruby-comment cmt">#被申请人</span>
+80:         <span class="ruby-keyword kw">else</span>
+81:           <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">submitman</span>=<span class="ruby-keyword kw">nil</span>
+82:         <span class="ruby-keyword kw">end</span>
+83:         <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">request_man</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+84:       <span class="ruby-keyword kw">end</span>
+85:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+86:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+87:       <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:jurisdiction</span>])
+88:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotSaved</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+89:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改失败&quot;</span>
+90:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_edit&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+91:     <span class="ruby-keyword kw">else</span>
+92:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改成功&quot;</span>
+93:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_list&quot;</span>
+94:     <span class="ruby-keyword kw">end</span>
+95:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000816" class="method-detail">
+        <a name="M000816"></a>
+
+        <div class="method-heading">
+          <a href="#M000816" class="method-signature">
+          <span class="method-name">remind_change</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000816-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000816-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 110</span>
+110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remind_change</span>
+111:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+112:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000817" class="method-detail">
+        <a name="M000817"></a>
+
+        <div class="method-heading">
+          <a href="#M000817" class="method-signature">
+          <span class="method-name">remind_update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000817-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000817-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/jurisdiction_controller.rb, line 114</span>
+114:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remind_update</span>
+115:     <span class="ruby-ivar">@jurisdiction</span>=<span class="ruby-constant">TbJurisdiction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+116:     <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">remind_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+117:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@jurisdiction</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:jurisdiction</span>]) 
+118:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;设置成功&quot;</span>
+119:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;jurisdiction_list&quot;</span>
+120:     <span class="ruby-keyword kw">else</span>
+121:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;设置失败&quot;</span>
+122:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;remind_change&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+123:     <span class="ruby-keyword kw">end</span>
+124:      
+125:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

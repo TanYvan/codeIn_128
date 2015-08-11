@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TExtendController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TExtendController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/t_extend_controller_rb.html">
+                app/controllers/t_extend_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001470">edit_taxrmb</a>&nbsp;&nbsp;
+      <a href="#M001469">extend_do</a>&nbsp;&nbsp;
+      <a href="#M001481">extend_do_2</a>&nbsp;&nbsp;
+      <a href="#M001475">history_do</a>&nbsp;&nbsp;
+      <a href="#M001476">history_list</a>&nbsp;&nbsp;
+      <a href="#M001467">list</a>&nbsp;&nbsp;
+      <a href="#M001478">list_2</a>&nbsp;&nbsp;
+      <a href="#M001472">list_extend</a>&nbsp;&nbsp;
+      <a href="#M001480">list_extend_2</a>&nbsp;&nbsp;
+      <a href="#M001473">list_extend_a</a>&nbsp;&nbsp;
+      <a href="#M001474">list_extend_b</a>&nbsp;&nbsp;
+      <a href="#M001482">list_extend_tax</a>&nbsp;&nbsp;
+      <a href="#M001468">recall</a>&nbsp;&nbsp;
+      <a href="#M001479">recall_2</a>&nbsp;&nbsp;
+      <a href="#M001477">recall_history</a>&nbsp;&nbsp;
+      <a href="#M001471">update_taxrmb</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001470" class="method-detail">
+        <a name="M001470"></a>
+
+        <div class="method-heading">
+          <a href="#M001470" class="method-signature">
+          <span class="method-name">edit_taxrmb</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001470-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001470-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 137</span>
+137:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_taxrmb</span>
+138:     <span class="ruby-ivar">@tb_extend</span> = <span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+139:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001469" class="method-detail">
+        <a name="M001469"></a>
+
+        <div class="method-heading">
+          <a href="#M001469" class="method-signature">
+          <span class="method-name">extend_do</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001469-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001469-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 59</span>
+ 59:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extend_do</span>
+ 60:     <span class="ruby-identifier">condi</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>]
+ 61:     <span class="ruby-identifier">remark</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:remark</span>]
+ 62:     <span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:extend_date</span>]
+ 63: 
+ 64:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+ 65:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">condi</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">remark</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+ 66: 
+ 67:       <span class="ruby-identifier">extend_code</span>=<span class="ruby-value str">''</span>
+ 68:       <span class="ruby-identifier">t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+ 69:       <span class="ruby-identifier">tax</span>=<span class="ruby-constant">Tax</span>.<span class="ruby-identifier">new</span>
+ 70: 
+ 71:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">condi!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span>  <span class="ruby-identifier">condi!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 72:         <span class="ruby-identifier">extend_code</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006</span>
+ 73:         <span class="ruby-comment cmt">#存储发放编码相关信息</span>
+ 74:         <span class="ruby-identifier">extend_c</span>=<span class="ruby-constant">TbTExtendCode</span>.<span class="ruby-identifier">new</span>()
+ 75:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t_extend_code</span>=<span class="ruby-identifier">extend_code</span>
+ 76:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">extend_date</span>
+ 77:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+ 78:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">remark</span>=<span class="ruby-identifier">remark</span>
+ 79:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t</span>=<span class="ruby-identifier">t</span>
+ 80:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">save</span>
+ 81: 
+ 82:         <span class="ruby-identifier">con</span>=<span class="ruby-identifier">condi</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+ 83:         <span class="ruby-identifier">con</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">co</span><span class="ruby-operator">|</span>
+ 84:           <span class="ruby-identifier">ex</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">co</span>.<span class="ruby-identifier">to_i</span>)
+ 85:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_code</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t_extend_code</span>
+ 86:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_u</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">u</span>
+ 87:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_t</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t</span>
+ 88:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">extend_date</span>
+ 89:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">save</span>
+ 90:         }
+ 91: 
+ 92:       <span class="ruby-keyword kw">end</span>
+ 93: 
+ 94:       <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+ 95: 
+ 96:       <span class="ruby-ivar">@tef</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select  distinct p_typ,p,p_name from tb_extends where t_extend_code='#{extend_code}'&quot;</span>)
+ 97:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">tef</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@tef</span>
+ 98:         <span class="ruby-ivar">@tbs</span>=<span class="ruby-constant">TbSmsAlert</span>.<span class="ruby-identifier">new</span>()
+ 99:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">used</span>=<span class="ruby-value str">'Y'</span>
+100:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0001'</span>
+101:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">content_id</span>=<span class="ruby-node">&quot;#{extend_code}-#{tef.p_typ}-#{tef.p}-#{tef.p_name}&quot;</span>
+102:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">p_typ</span>=<span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p_typ</span>
+103:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">p</span>=<span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p</span>
+104:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">p_name</span>=<span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p_name</span>
+105:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p_typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'0001'</span>
+106:           <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">mobiletel</span>=<span class="ruby-constant">TbArbitman</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p</span>).<span class="ruby-identifier">mobiletel</span>
+107:         <span class="ruby-keyword kw">else</span>
+108:           <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">mobiletel</span>=<span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">tef</span>.<span class="ruby-identifier">p</span>).<span class="ruby-identifier">mobiletel</span>
+109:         <span class="ruby-keyword kw">end</span>
+110:         <span class="ruby-ivar">@tef_2</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select  distinct case_code from tb_extends where t_extend_code='#{extend_code}' and p_typ='#{tef.p_typ}' and p='#{tef.p}' and p_name='#{tef.p_name}' order by case_code&quot;</span>)
+111:         <span class="ruby-identifier">contents</span>=<span class="ruby-value str">&quot;&quot;</span>
+112:         <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">tef_2</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@tef_2</span>
+113:           <span class="ruby-identifier">contents</span>=<span class="ruby-identifier">contents</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;华南国际经济贸易仲裁委员会报酬发放通知:#{tef_2.case_code}案:&quot;</span>
+114:           <span class="ruby-ivar">@tef_tef</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select * from tb_extends where t_extend_code='#{extend_code}' and case_code='#{tef_2.case_code}' and p_typ='#{tef.p_typ}' and p='#{tef.p}' and p_name='#{tef.p_name}' order by typ&quot;</span>)
+115:           <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">tef_tef</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@tef_tef</span>
+116:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tef_tef</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'4'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">tef_tef</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'5'</span>
+117:               <span class="ruby-identifier">contents</span>=<span class="ruby-identifier">contents</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;#{TbDictionary.find(:first,:conditions=&gt;&quot;typ_code='0050' and data_val='#{TbRemuneration23.find_by_extend_id(tef_tef.id).typ}'&quot;).data_text}实发#{tef_tef.extend_rmb}元，&quot;</span>
+118:             <span class="ruby-keyword kw">else</span>
+119:               <span class="ruby-identifier">contents</span>=<span class="ruby-identifier">contents</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;#{@typ2[tef_tef.typ]}实发#{tef_tef.extend_rmb}元，&quot;</span>
+120:             <span class="ruby-keyword kw">end</span>
+121:           <span class="ruby-keyword kw">end</span>
+122:           <span class="ruby-identifier">contents</span>=<span class="ruby-identifier">contents</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;已经发放，请查收。&quot;</span>
+123:         <span class="ruby-keyword kw">end</span>
+124:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">contents</span>=<span class="ruby-identifier">contents</span>
+125:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">send_state</span>=<span class="ruby-value">100</span>
+126:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">c_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+127:         <span class="ruby-ivar">@tbs</span>.<span class="ruby-identifier">save</span>
+128:       <span class="ruby-keyword kw">end</span>
+129: 
+130:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-node">&quot;#{extend_code}发放成功&quot;</span>
+131:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'list'</span>
+132: 
+133:     <span class="ruby-keyword kw">end</span>
+134: 
+135:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001481" class="method-detail">
+        <a name="M001481"></a>
+
+        <div class="method-heading">
+          <a href="#M001481" class="method-signature">
+          <span class="method-name">extend_do_2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001481-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001481-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 337</span>
+337:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extend_do_2</span>
+338:     <span class="ruby-identifier">condi</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>]
+339:     <span class="ruby-identifier">remark</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:remark</span>]
+340:     <span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:extend_date</span>]
+341: 
+342:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+343:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">condi</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">remark</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+344: 
+345:       <span class="ruby-identifier">extend_code</span>=<span class="ruby-value str">''</span>
+346:       <span class="ruby-identifier">t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+347:       <span class="ruby-identifier">tax</span>=<span class="ruby-constant">Tax</span>.<span class="ruby-identifier">new</span>
+348: 
+349:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">condi!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span>  <span class="ruby-identifier">condi!</span>=<span class="ruby-value str">&quot;&quot;</span>
+350:         <span class="ruby-identifier">extend_code</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_1</span>
+351:         <span class="ruby-comment cmt">#存储发放编码相关信息</span>
+352:         <span class="ruby-identifier">extend_c</span>=<span class="ruby-constant">TbSelfTExtendCode</span>.<span class="ruby-identifier">new</span>()
+353:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t_extend_code</span>=<span class="ruby-identifier">extend_code</span>
+354:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">extend_date</span>
+355:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+356:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">remark</span>=<span class="ruby-identifier">remark</span>
+357:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t</span>=<span class="ruby-identifier">t</span>
+358:         <span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">save</span>
+359: 
+360:         <span class="ruby-identifier">con</span>=<span class="ruby-identifier">condi</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+361:         <span class="ruby-identifier">con</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">co</span><span class="ruby-operator">|</span>
+362:           <span class="ruby-identifier">ex</span>=<span class="ruby-constant">TbSelfExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">co</span>.<span class="ruby-identifier">to_i</span>)
+363:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_code</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t_extend_code</span>
+364:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_u</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">u</span>
+365:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">t_extend_t</span>=<span class="ruby-identifier">extend_c</span>.<span class="ruby-identifier">t</span>
+366:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">extend_date</span>=<span class="ruby-identifier">extend_date</span>
+367:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">save</span>
+368:         }
+369: 
+370:       <span class="ruby-keyword kw">end</span>
+371: 
+372:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-node">&quot;#{extend_code}发放成功&quot;</span>
+373:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'list_2'</span>
+374: 
+375:     <span class="ruby-keyword kw">end</span>
+376: 
+377:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001475" class="method-detail">
+        <a name="M001475"></a>
+
+        <div class="method-heading">
+          <a href="#M001475" class="method-signature">
+          <span class="method-name">history_do</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001475-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001475-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 196</span>
+196:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">history_do</span>
+197:     <span class="ruby-identifier">condi</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:history_condi</span>]
+198:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+199:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">condi</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+200:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">condi!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span>  <span class="ruby-identifier">condi!</span>=<span class="ruby-value str">&quot;&quot;</span>
+201:         <span class="ruby-identifier">con</span>=<span class="ruby-identifier">condi</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+202:         <span class="ruby-identifier">con</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">co</span><span class="ruby-operator">|</span>
+203:           <span class="ruby-identifier">ex</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">co</span>.<span class="ruby-identifier">to_i</span>)
+204:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">-1</span>
+205:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+206:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state_u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+207:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">save</span>
+208:         }
+209:       <span class="ruby-keyword kw">end</span>
+210: 
+211:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;成功转为历史待处理&quot;</span>
+212:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'list'</span>
+213:     <span class="ruby-keyword kw">end</span>
+214:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001476" class="method-detail">
+        <a name="M001476"></a>
+
+        <div class="method-heading">
+          <a href="#M001476" class="method-signature">
+          <span class="method-name">history_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001476-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001476-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 216</span>
+216:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">history_list</span>
+217:     <span class="ruby-ivar">@bank_typ</span> = {}
+218:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+219: 
+220:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+221:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+222:     <span class="ruby-ivar">@hant_search_1_page_name</span>=<span class="ruby-value str">&quot;history_list&quot;</span>
+223:     <span class="ruby-ivar">@hant_search_1</span>=[[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'立案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'结案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'总案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'咨询流水号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'p_name'</span>,<span class="ruby-value str">'姓名'</span>,<span class="ruby-value str">'text'</span>,[]]]
+224:     <span class="ruby-ivar">@hant_search_1_list</span>=[<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'p_name'</span>]
+225: 
+226:     <span class="ruby-identifier">hant_search_1_word</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_word</span>]
+227:      <span class="ruby-ivar">@hant_search_1_text</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_text</span>]
+228:     <span class="ruby-ivar">@search_condit</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>]
+229:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+230:       <span class="ruby-ivar">@search_condit</span>=<span class="ruby-value str">&quot;&quot;</span>
+231:     <span class="ruby-keyword kw">end</span>
+232:     <span class="ruby-ivar">@hant_search_1_r</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_r</span>]
+233:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+234:     <span class="ruby-keyword kw">else</span>
+235:       <span class="ruby-ivar">@search_condit</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hant_search_1_word</span>
+236:     <span class="ruby-keyword kw">end</span>
+237:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;t_extend_code='' and used='Y' and state=-1 &quot;</span>
+238:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+239:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit!</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@search_condit</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+240:       <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@search_condit</span>
+241:     <span class="ruby-keyword kw">end</span>
+242:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1000000000</span>)
+243:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001467" class="method-detail">
+        <a name="M001467"></a>
+
+        <div class="method-heading">
+          <a href="#M001467" class="method-signature">
+          <span class="method-name">list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001467-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001467-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 3</span>
+ 3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list</span>
+ 4:     <span class="ruby-ivar">@bank_typ</span> = {}
+ 5:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+ 6: 
+ 7:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+ 8:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+ 9:     <span class="ruby-ivar">@hant_search_1_page_name</span>=<span class="ruby-value str">&quot;list&quot;</span>
+10:     <span class="ruby-ivar">@hant_search_1</span>=[[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'立案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'结案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'总案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'咨询流水号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'p_name'</span>,<span class="ruby-value str">'姓名'</span>,<span class="ruby-value str">'text'</span>,[]]]
+11:     <span class="ruby-ivar">@hant_search_1_list</span>=[<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'p_name'</span>]
+12: <span class="ruby-comment cmt">#    @order=params[:order]</span>
+13: <span class="ruby-comment cmt">#    if @order==nil or @order==&quot;&quot;</span>
+14: <span class="ruby-comment cmt">#      @order=&quot;recevice_code desc&quot;</span>
+15: <span class="ruby-comment cmt">#    end</span>
+16:     <span class="ruby-identifier">hant_search_1_word</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_word</span>]
+17:      <span class="ruby-ivar">@hant_search_1_text</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_text</span>]
+18:     <span class="ruby-ivar">@search_condit</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>]
+19:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+20:       <span class="ruby-ivar">@search_condit</span>=<span class="ruby-value str">&quot;&quot;</span>
+21:     <span class="ruby-keyword kw">end</span>
+22:     <span class="ruby-ivar">@hant_search_1_r</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_r</span>]
+23:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+24:     <span class="ruby-keyword kw">else</span>
+25:       <span class="ruby-ivar">@search_condit</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hant_search_1_word</span>
+26:     <span class="ruby-keyword kw">end</span>
+27:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;t_extend_code='' and used='Y' and state=0 &quot;</span>
+28:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+29:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit!</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@search_condit</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+30:       <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@search_condit</span>
+31:     <span class="ruby-keyword kw">end</span>
+32:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1000000000</span>)
+33:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001478" class="method-detail">
+        <a name="M001478"></a>
+
+        <div class="method-heading">
+          <a href="#M001478" class="method-signature">
+          <span class="method-name">list_2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001478-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001478-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 265</span>
+265:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_2</span>
+266:     <span class="ruby-ivar">@bank_typ</span> = {}
+267:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+268: 
+269:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+270:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+271:     <span class="ruby-ivar">@hant_search_1_page_name</span>=<span class="ruby-value str">&quot;list_2&quot;</span>
+272:     <span class="ruby-ivar">@hant_search_1</span>=[[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'立案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'结案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'总案号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'咨询流水号'</span>,<span class="ruby-value str">'text'</span>,[]],[<span class="ruby-value str">'char'</span>,<span class="ruby-value str">'p_name'</span>,<span class="ruby-value str">'姓名'</span>,<span class="ruby-value str">'text'</span>,[]]]
+273:     <span class="ruby-ivar">@hant_search_1_list</span>=[<span class="ruby-value str">'case_code'</span>,<span class="ruby-value str">'end_code'</span>,<span class="ruby-value str">'general_code'</span>,<span class="ruby-value str">'recevice_code'</span>,<span class="ruby-value str">'p_name'</span>]
+274: <span class="ruby-comment cmt">#    @order=params[:order]</span>
+275: <span class="ruby-comment cmt">#    if @order==nil or @order==&quot;&quot;</span>
+276: <span class="ruby-comment cmt">#      @order=&quot;recevice_code desc&quot;</span>
+277: <span class="ruby-comment cmt">#    end</span>
+278:     <span class="ruby-identifier">hant_search_1_word</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_word</span>]
+279:      <span class="ruby-ivar">@hant_search_1_text</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_text</span>]
+280:     <span class="ruby-ivar">@search_condit</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>]
+281:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+282:       <span class="ruby-ivar">@search_condit</span>=<span class="ruby-value str">&quot;&quot;</span>
+283:     <span class="ruby-keyword kw">end</span>
+284:     <span class="ruby-ivar">@hant_search_1_r</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:hant_search_1_r</span>]
+285:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">hant_search_1_word</span> <span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+286:     <span class="ruby-keyword kw">else</span>
+287:       <span class="ruby-ivar">@search_condit</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hant_search_1_word</span>
+288:     <span class="ruby-keyword kw">end</span>
+289:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;t_extend_code='' and used='Y' and state=0 &quot;</span>
+290:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+291:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@search_condit!</span>= <span class="ruby-value str">&quot; and &quot;</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@search_condit</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+292:       <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@search_condit</span>
+293:     <span class="ruby-keyword kw">end</span>
+294:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_self_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1000000000</span>)
+295:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001472" class="method-detail">
+        <a name="M001472"></a>
+
+        <div class="method-heading">
+          <a href="#M001472" class="method-signature">
+          <span class="method-name">list_extend</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+某个报酬发放编码下的报酬发放列表,外单位仲裁员
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001472-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001472-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 161</span>
+161:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_extend</span>
+162:     <span class="ruby-ivar">@bank_typ</span> = {}
+163:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+164:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+165:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+166:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;used='Y' and t_extend_code=''  and state=0 &quot;</span>
+167:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10000000</span>)<span class="ruby-comment cmt">#case_code,p_typ,p_name,typ</span>
+168:     <span class="ruby-identifier">a</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_next</span>
+169:     <span class="ruby-ivar">@title</span>=<span class="ruby-node">&quot;#{a.slice(0,4).to_i}年#{a.slice(4,2).to_i}月第#{a.slice(6,3).to_i}批仲裁服务报酬明细表&quot;</span>
+170:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001480" class="method-detail">
+        <a name="M001480"></a>
+
+        <div class="method-heading">
+          <a href="#M001480" class="method-signature">
+          <span class="method-name">list_extend_2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+某个报酬发放编码下的报酬发放列表,本单位员工 仲裁员
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001480-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001480-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 324</span>
+324:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_extend_2</span>
+325:     <span class="ruby-ivar">@bank_typ</span> = {}
+326:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+327:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+328:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+329:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;used='Y' and t_extend_code=''  and state=0 &quot;</span>
+330:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_self_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10000000</span>)<span class="ruby-comment cmt">#case_code,p_typ,p_name,typ</span>
+331:     <span class="ruby-identifier">a</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_1_next</span>
+332:     <span class="ruby-ivar">@title</span>=<span class="ruby-node">&quot;#{a.slice(0,4).to_i}年#{a.slice(4,2).to_i}月第#{a.slice(6,3).to_i}批仲裁服务报酬明细表&quot;</span>
+333:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001473" class="method-detail">
+        <a name="M001473"></a>
+
+        <div class="method-heading">
+          <a href="#M001473" class="method-signature">
+          <span class="method-name">list_extend_a</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001473-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001473-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 172</span>
+172:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_extend_a</span>
+173:     <span class="ruby-ivar">@bank_typ</span> = {}
+174:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+175: 
+176:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+177:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+178:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;(bank_typ='0003' or bank_typ='0004') and used='Y' and t_extend_code='' and state=0 &quot;</span>
+179:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10000000</span>)<span class="ruby-comment cmt">#case_code,p_typ,p_name,typ</span>
+180:     <span class="ruby-identifier">a</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_next</span>
+181:     <span class="ruby-ivar">@title</span>=<span class="ruby-node">&quot;#{a.slice(0,4).to_i}年#{a.slice(4,2).to_i}月第#{a.slice(6,3).to_i}批仲裁服务报酬明细表(本地)&quot;</span>
+182:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001474" class="method-detail">
+        <a name="M001474"></a>
+
+        <div class="method-heading">
+          <a href="#M001474" class="method-signature">
+          <span class="method-name">list_extend_b</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001474-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001474-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 184</span>
+184:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_extend_b</span>
+185:     <span class="ruby-ivar">@bank_typ</span> = {}
+186:     <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='8201'&quot;</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bbb</span><span class="ruby-operator">|</span>  <span class="ruby-ivar">@bank_typ</span>.<span class="ruby-identifier">merge!</span>({<span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bbb</span>.<span class="ruby-identifier">data_text</span>})}
+187: 
+188:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+189:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+190:     <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;bank_typ='0005' and used='Y' and t_extend_code='' and state=0 &quot;</span>
+191:     <span class="ruby-ivar">@extend_pages</span>,<span class="ruby-ivar">@tb_extends</span> =<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_extends</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10000000</span>)<span class="ruby-comment cmt">#case_code,p_typ,p_name,typ</span>
+192:     <span class="ruby-identifier">a</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_next</span>
+193:     <span class="ruby-ivar">@title</span>=<span class="ruby-node">&quot;#{a.slice(0,4).to_i}年#{a.slice(4,2).to_i}月第#{a.slice(6,3).to_i}批仲裁服务报酬明细表(外地)&quot;</span>
+194:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001482" class="method-detail">
+        <a name="M001482"></a>
+
+        <div class="method-heading">
+          <a href="#M001482" class="method-signature">
+          <span class="method-name">list_extend_tax</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001482-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001482-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 380</span>
+380:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_extend_tax</span>
+381:     <span class="ruby-ivar">@bank_typ</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;本地&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;外地&quot;</span>}
+382:     <span class="ruby-ivar">@typ2</span>={<span class="ruby-value str">&quot;1&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;报酬&quot;</span>,<span class="ruby-value str">&quot;2&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;奖励&quot;</span>,<span class="ruby-value str">&quot;3&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;扣减&quot;</span>,<span class="ruby-value str">&quot;4&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;办案其它报酬&quot;</span>,<span class="ruby-value str">&quot;5&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;出差补助合计&quot;</span>}
+383:     <span class="ruby-ivar">@p_typ2</span>={<span class="ruby-value str">&quot;0001&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;仲裁员&quot;</span>,<span class="ruby-value str">&quot;0002&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;助理&quot;</span>,<span class="ruby-value str">&quot;0003&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;校核人员&quot;</span>,<span class="ruby-value str">&quot;0004&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;员工&quot;</span>}
+384:     <span class="ruby-comment cmt">#t_extend_code = params[:t_extend_code]</span>
+385:     <span class="ruby-identifier">c</span> = <span class="ruby-value str">&quot;used='Y' and t_extend_code='' and state=0&quot;</span>
+386:     <span class="ruby-ivar">@tb_extends</span> = <span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">c</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>)<span class="ruby-comment cmt">#case_code,p_typ,p_name,typ</span>
+387:     <span class="ruby-comment cmt">#tim = @tb_extends.first.t_extend_t</span>
+388:     <span class="ruby-identifier">a</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">add_0006_next</span>
+389:     <span class="ruby-ivar">@tablename</span> = <span class="ruby-node">&quot;（发放批次:#{a}）扣税总表&quot;</span>
+390:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001468" class="method-detail">
+        <a name="M001468"></a>
+
+        <div class="method-heading">
+          <a href="#M001468" class="method-signature">
+          <span class="method-name">recall</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001468-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001468-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 35</span>
+35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recall</span>
+36:     <span class="ruby-ivar">@te</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+37:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+38:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbBonusPenalty</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+39:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'2'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'3'</span>
+40:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbDeduction</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+41:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'4'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'5'</span>
+42:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbRemuneration23</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+43:     <span class="ruby-keyword kw">end</span>
+44:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_code</span>=<span class="ruby-value str">''</span>
+45:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+46:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+47:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_id</span>=<span class="ruby-value">0</span>
+48:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">save</span>
+49:       <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">used</span>=<span class="ruby-value str">'N'</span>
+50:       <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">save</span>
+51:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;取消待发成功&quot;</span>
+52:     <span class="ruby-keyword kw">else</span>
+53:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;取消待发失败&quot;</span>
+54:     <span class="ruby-keyword kw">end</span>
+55: 
+56:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list&quot;</span>,<span class="ruby-identifier">:search_condit=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>],<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:order</span>]
+57:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001479" class="method-detail">
+        <a name="M001479"></a>
+
+        <div class="method-heading">
+          <a href="#M001479" class="method-signature">
+          <span class="method-name">recall_2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001479-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001479-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 298</span>
+298:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recall_2</span>
+299:     <span class="ruby-ivar">@te</span>=<span class="ruby-constant">TbSelfExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+300:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+301:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbBonusPenalty</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+302:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'2'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'3'</span>
+303:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbDeduction</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+304:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'4'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">typ</span><span class="ruby-operator">==</span><span class="ruby-value str">'5'</span>
+305:       <span class="ruby-ivar">@td</span>=<span class="ruby-constant">TbRemuneration23</span>.<span class="ruby-identifier">find_by_extend_id</span>(<span class="ruby-ivar">@te</span>.<span class="ruby-identifier">id</span>)
+306:     <span class="ruby-keyword kw">end</span>
+307:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_code</span>=<span class="ruby-value str">''</span>
+308:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+309:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+310:     <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">extend_id</span>=<span class="ruby-value">0</span>
+311:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@td</span>.<span class="ruby-identifier">save</span>
+312:       <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">used</span>=<span class="ruby-value str">'N'</span>
+313:       <span class="ruby-ivar">@te</span>.<span class="ruby-identifier">save</span>
+314:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;取消待发成功&quot;</span>
+315:     <span class="ruby-keyword kw">else</span>
+316:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;取消待发失败&quot;</span>
+317:     <span class="ruby-keyword kw">end</span>
+318: 
+319:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list_2&quot;</span>,<span class="ruby-identifier">:search_condit=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>],<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:order</span>]
+320:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001477" class="method-detail">
+        <a name="M001477"></a>
+
+        <div class="method-heading">
+          <a href="#M001477" class="method-signature">
+          <span class="method-name">recall_history</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001477-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001477-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 245</span>
+245:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recall_history</span>
+246:     <span class="ruby-identifier">condi</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:history_condi</span>]
+247:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+248:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-identifier">condi</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+249:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">condi!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span>  <span class="ruby-identifier">condi!</span>=<span class="ruby-value str">&quot;&quot;</span>
+250:         <span class="ruby-identifier">con</span>=<span class="ruby-identifier">condi</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+251:         <span class="ruby-identifier">con</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">co</span><span class="ruby-operator">|</span>
+252:           <span class="ruby-identifier">ex</span>=<span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">co</span>.<span class="ruby-identifier">to_i</span>)
+253:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">0</span>
+254:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+255:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">state_u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+256:           <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">save</span>
+257:         }
+258:       <span class="ruby-keyword kw">end</span>
+259: 
+260:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;成功转为待发报酬&quot;</span>
+261:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'history_list'</span>
+262:     <span class="ruby-keyword kw">end</span>
+263:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001471" class="method-detail">
+        <a name="M001471"></a>
+
+        <div class="method-heading">
+          <a href="#M001471" class="method-signature">
+          <span class="method-name">update_taxrmb</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001471-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001471-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/t_extend_controller.rb, line 141</span>
+141:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_taxrmb</span>
+142:     <span class="ruby-ivar">@tb_extend</span> = <span class="ruby-constant">TbExtend</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+143:     <span class="ruby-identifier">tax</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:tb_extend</span>][<span class="ruby-identifier">:tax_rmb</span>].<span class="ruby-identifier">to_f</span>
+144:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tax</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">tax_base_rmb</span>
+145:       <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">tax_rmb</span> = <span class="ruby-identifier">tax</span>
+146:       <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">extend_rmb</span> = <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">tax_base_rmb</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">tax</span>
+147:       <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">remark</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:tb_extend</span>][<span class="ruby-identifier">:remark</span>]
+148:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@tb_extend</span>.<span class="ruby-identifier">save</span>
+149:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;&lt;script type='text/javascript'&gt;window.opener.parent.document.frames['mainFrame'].location.reload();window.close();&lt;/script&gt;&quot;</span>
+150:       <span class="ruby-keyword kw">else</span>
+151:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改失败&quot;</span>
+152:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;edit_taxrmb&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+153:       <span class="ruby-keyword kw">end</span>
+154:     <span class="ruby-keyword kw">else</span>
+155:        <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;纳税额不能大于应纳税所得！&quot;</span>
+156:        <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;edit_taxrmb&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+157:     <span class="ruby-keyword kw">end</span>
+158:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

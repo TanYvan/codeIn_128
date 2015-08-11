@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: CasebaseController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">CasebaseController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/casebase_controller_rb.html">
+                app/controllers/casebase_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001900">book_down</a>&nbsp;&nbsp;
+      <a href="#M001901">book_down2</a>&nbsp;&nbsp;
+      <a href="#M001902">book_down3</a>&nbsp;&nbsp;
+      <a href="#M001909">con_create</a>&nbsp;&nbsp;
+      <a href="#M001912">con_delete</a>&nbsp;&nbsp;
+      <a href="#M001910">con_edit</a>&nbsp;&nbsp;
+      <a href="#M001907">con_list</a>&nbsp;&nbsp;
+      <a href="#M001908">con_new</a>&nbsp;&nbsp;
+      <a href="#M001911">con_update</a>&nbsp;&nbsp;
+      <a href="#M001905">edit</a>&nbsp;&nbsp;
+      <a href="#M001899">list</a>&nbsp;&nbsp;
+      <a href="#M001903">p_set</a>&nbsp;&nbsp;
+      <a href="#M001904">select</a>&nbsp;&nbsp;
+      <a href="#M001906">update</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001900" class="method-detail">
+        <a name="M001900"></a>
+
+        <div class="method-heading">
+          <a href="#M001900" class="method-signature">
+          <span class="method-name">book_down</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+下载庭审笔录
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001900-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001900-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 110</span>
+110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">book_down</span>    
+111:     <span class="ruby-ivar">@doc</span>=<span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and p_id=? and typ='0001' and recevice_code=?&quot;</span>,<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>],<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]])
+112:     <span class="ruby-ivar">@yea</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+113:     <span class="ruby-identifier">send_file</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{params[:recevice_code]}/#{@doc.book_name}&quot;</span>)
+114:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001901" class="method-detail">
+        <a name="M001901"></a>
+
+        <div class="method-heading">
+          <a href="#M001901" class="method-signature">
+          <span class="method-name">book_down2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+裁决书下载查看
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001901-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001901-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 116</span>
+116:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">book_down2</span>
+117:     <span class="ruby-ivar">@doc</span>=<span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;used='Y' and p_id=? and typ='0002' and book_typ=? and recevice_code=?&quot;</span>,<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>],<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:book_typ</span>],<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]])
+118:     <span class="ruby-ivar">@yea</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>].<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+119:     <span class="ruby-identifier">name</span>=<span class="ruby-constant">TbCaseendbook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_id</span>]).<span class="ruby-identifier">arbitBookNum</span>
+120:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+121:       <span class="ruby-identifier">name</span>=<span class="ruby-value str">'裁决书.doc'</span>
+122:     <span class="ruby-keyword kw">end</span>
+123:     <span class="ruby-identifier">send_file</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{params[:recevice_code]}/#{@doc.book_name}&quot;</span>,<span class="ruby-identifier">:filename=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;#{name}.doc&quot;</span>)
+124:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001902" class="method-detail">
+        <a name="M001902"></a>
+
+        <div class="method-heading">
+          <a href="#M001902" class="method-signature">
+          <span class="method-name">book_down3</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+专家咨询文件下载
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001902-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001902-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 126</span>
+126:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">book_down3</span>
+127:     <span class="ruby-ivar">@doc</span>=<span class="ruby-constant">CaseBook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+128:     <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">recevice_code</span>)
+129:     <span class="ruby-ivar">@yea</span>=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">recevice_code</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">4</span>)
+130:     <span class="ruby-identifier">send_file</span>(<span class="ruby-node">&quot;#{SysArg.find_by_code(&quot;8010&quot;).val}/casedocs/#{@yea}/#{@doc.recevice_code}/#{@doc.book_name}&quot;</span>)
+131:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001909" class="method-detail">
+        <a name="M001909"></a>
+
+        <div class="method-heading">
+          <a href="#M001909" class="method-signature">
+          <span class="method-name">con_create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001909-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001909-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 194</span>
+194:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_create</span>
+195:     <span class="ruby-ivar">@con</span>=<span class="ruby-constant">TbContractsign</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:con</span>])
+196:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+197:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+198:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+199:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">save</span>
+200:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;创建成功&quot;</span>
+201:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;con_list&quot;</span>,<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+202:     <span class="ruby-keyword kw">else</span>
+203:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;创建失败&quot;</span>
+204:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;con_new&quot;</span> ,<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+205:     <span class="ruby-keyword kw">end</span>
+206: 
+207:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001912" class="method-detail">
+        <a name="M001912"></a>
+
+        <div class="method-heading">
+          <a href="#M001912" class="method-signature">
+          <span class="method-name">con_delete</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001912-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001912-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 226</span>
+226:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_delete</span>
+227:     <span class="ruby-ivar">@con</span>=<span class="ruby-constant">TbContractsign</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+228:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">used</span>=<span class="ruby-value str">&quot;N&quot;</span>
+229:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+230:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+231:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">save</span>
+232:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除成功&quot;</span>
+233:     <span class="ruby-keyword kw">else</span>
+234:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;删除失败&quot;</span>
+235:     <span class="ruby-keyword kw">end</span>
+236:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;con_list&quot;</span>,<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+237:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001910" class="method-detail">
+        <a name="M001910"></a>
+
+        <div class="method-heading">
+          <a href="#M001910" class="method-signature">
+          <span class="method-name">con_edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001910-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001910-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 209</span>
+209:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_edit</span>
+210:     <span class="ruby-ivar">@con</span>=<span class="ruby-constant">TbContractsign</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+211:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001907" class="method-detail">
+        <a name="M001907"></a>
+
+        <div class="method-heading">
+          <a href="#M001907" class="method-signature">
+          <span class="method-name">con_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+代理人
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001907-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001907-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 179</span>
+179:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_list</span>
+180:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@order</span><span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+181:       <span class="ruby-ivar">@order</span>=<span class="ruby-value str">&quot;id asc&quot;</span>
+182:     <span class="ruby-keyword kw">end</span>
+183:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+184:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>])<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span>
+185:       <span class="ruby-ivar">@con_pages</span>,<span class="ruby-ivar">@con</span>=<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:tb_contractsigns</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;used='Y' and recevice_code=#{params[:recevice_code]}&quot;</span>)
+186:     <span class="ruby-keyword kw">end</span>
+187:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001908" class="method-detail">
+        <a name="M001908"></a>
+
+        <div class="method-heading">
+          <a href="#M001908" class="method-signature">
+          <span class="method-name">con_new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001908-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001908-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 189</span>
+189:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_new</span>
+190:     <span class="ruby-ivar">@con</span>=<span class="ruby-constant">TbContractsign</span>.<span class="ruby-identifier">new</span>()
+191:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">contractdate</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]).<span class="ruby-identifier">acceptt</span>
+192:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001911" class="method-detail">
+        <a name="M001911"></a>
+
+        <div class="method-heading">
+          <a href="#M001911" class="method-signature">
+          <span class="method-name">con_update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001911-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001911-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 213</span>
+213:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">con_update</span>
+214:     <span class="ruby-ivar">@con</span>=<span class="ruby-constant">TbContractsign</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+215:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_code</span>]
+216:     <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">u_t</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()
+217:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@con</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:con</span>])
+218:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改成功&quot;</span>
+219:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;con_list&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>],<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+220:     <span class="ruby-keyword kw">else</span>
+221:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改失败&quot;</span>
+222:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;con_edit&quot;</span>,<span class="ruby-identifier">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>],<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+223:     <span class="ruby-keyword kw">end</span>
+224:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001905" class="method-detail">
+        <a name="M001905"></a>
+
+        <div class="method-heading">
+          <a href="#M001905" class="method-signature">
+          <span class="method-name">edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001905-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001905-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 147</span>
+147:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+148:     <span class="ruby-ivar">@case</span>=<span class="ruby-keyword kw">nil</span><span class="ruby-comment cmt">#当前办理案件</span>
+149:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+150:     <span class="ruby-keyword kw">else</span>
+151:       <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>])
+152:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case!</span>=<span class="ruby-keyword kw">nil</span>
+153:         <span class="ruby-ivar">@t_typ</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='0043' and state='Y' and data_parent=''&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'data_val'</span>,<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;data_val,data_text&quot;</span>).<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>[<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_val</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_text</span>,<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_val</span>]}
+154:         <span class="ruby-ivar">@typ1</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;typ_code='0002' and state='Y' and data_parent=''&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'data_val'</span>,<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;data_val,data_text&quot;</span>).<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>[<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_text</span>,<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_val</span>]}
+155:         <span class="ruby-ivar">@typ2</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0002' and state='Y' and data_parent='#{@case.casetype_num}'&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'data_val'</span>,<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;data_val,data_text&quot;</span>).<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>[<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_text</span>,<span class="ruby-identifier">p</span>.<span class="ruby-identifier">data_val</span>]}
+156:       <span class="ruby-keyword kw">end</span>
+157:     <span class="ruby-keyword kw">end</span>
+158:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001899" class="method-detail">
+        <a name="M001899"></a>
+
+        <div class="method-heading">
+          <a href="#M001899" class="method-signature">
+          <span class="method-name">list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001899-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001899-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 9</span>
+  9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list</span>
+ 10:     <span class="ruby-ivar">@case</span>=<span class="ruby-keyword kw">nil</span><span class="ruby-comment cmt">#当前办理案件</span>
+ 11:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+ 12:     <span class="ruby-keyword kw">else</span>
+ 13:       <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>])
+ 14:       <span class="ruby-comment cmt">#查出仲裁员</span>
+ 15:       <span class="ruby-ivar">@case_arbitmen</span> =<span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;used='Y' and recevice_code='#{session[:recevice_code]}'&quot;</span>)
+ 16:       <span class="ruby-ivar">@arr1</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 17:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@case_arbitmen</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+ 18:         <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">a</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@case_arbitmen</span>
+ 19:           <span class="ruby-ivar">@arbitmanname</span> = <span class="ruby-constant">TbArbitman</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;code=? and used='Y'&quot;</span>,<span class="ruby-identifier">a</span>.<span class="ruby-identifier">arbitman</span>])
+ 20:           <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@arbitmanname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 21:             <span class="ruby-ivar">@arr1</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@arbitmanname</span>.<span class="ruby-identifier">name</span><span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
+ 22:           <span class="ruby-keyword kw">end</span>
+ 23:         <span class="ruby-keyword kw">end</span>
+ 24:       <span class="ruby-keyword kw">end</span>
+ 25:       <span class="ruby-comment cmt">#助理</span>
+ 26:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case!</span>=<span class="ruby-keyword kw">nil</span>
+ 27:         <span class="ruby-ivar">@zl</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;code=? and used='Y'&quot;</span>,<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">clerk</span>])
+ 28:         <span class="ruby-ivar">@zl</span> = <span class="ruby-ivar">@zl</span>.<span class="ruby-identifier">name</span>
+ 29:       <span class="ruby-keyword kw">end</span>
+ 30:       <span class="ruby-comment cmt">#结案方式</span>
+ 31:       <span class="ruby-identifier">caseendbook</span> = <span class="ruby-constant">TbCaseendbook</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-node">&quot;recevice_code='#{session[:recevice_code]}' and used='Y'&quot;</span>])
+ 32:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">caseendbook</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 33:         <span class="ruby-identifier">endcasestyle</span> = <span class="ruby-identifier">caseendbook</span>.<span class="ruby-identifier">endStyle</span>
+ 34:         <span class="ruby-ivar">@endstyle</span> = <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='8117' and data_val='#{endcasestyle}'&quot;</span>)
+ 35:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endstyle</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 36:           <span class="ruby-ivar">@endstyle</span> = <span class="ruby-ivar">@endstyle</span>.<span class="ruby-identifier">data_text</span>
+ 37:         <span class="ruby-keyword kw">else</span>
+ 38:           <span class="ruby-ivar">@endstyle</span> = <span class="ruby-value str">&quot; &quot;</span>
+ 39:         <span class="ruby-keyword kw">end</span>
+ 40:       <span class="ruby-keyword kw">else</span>
+ 41:         <span class="ruby-ivar">@endstyle</span> = <span class="ruby-value str">&quot; &quot;</span>
+ 42:       <span class="ruby-keyword kw">end</span>
+ 43:       <span class="ruby-comment cmt">#申请人，被申请人地区</span>
+ 44:       <span class="ruby-ivar">@area11</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 45:       <span class="ruby-ivar">@area1</span> = <span class="ruby-constant">TbParty</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'id'</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;recevice_code='#{session[:recevice_code]}' and used='Y' and partytype=1&quot;</span>)
+ 46:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@area1</span>)<span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 47:         <span class="ruby-ivar">@area1</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span><span class="ruby-operator">|</span><span class="ruby-identifier">ar</span><span class="ruby-operator">|</span>
+ 48:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ar</span>.<span class="ruby-identifier">area</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Region</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">ar</span>.<span class="ruby-identifier">area</span>)
+ 49:             <span class="ruby-ivar">@area11</span> = <span class="ruby-ivar">@area11</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Region</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">ar</span>.<span class="ruby-identifier">area</span>).<span class="ruby-identifier">name</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;、&quot;</span>
+ 50:           <span class="ruby-keyword kw">end</span>
+ 51:         <span class="ruby-keyword kw">end</span>
+ 52:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@area11!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 53:           <span class="ruby-ivar">@area11</span>=<span class="ruby-ivar">@area11</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-ivar">@area11</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">3</span>)
+ 54:         <span class="ruby-keyword kw">end</span>
+ 55:       <span class="ruby-keyword kw">else</span>
+ 56:         <span class="ruby-ivar">@area11</span> = <span class="ruby-value str">&quot;&quot;</span>
+ 57:       <span class="ruby-keyword kw">end</span>
+ 58:       <span class="ruby-ivar">@area22</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 59:       <span class="ruby-ivar">@area2</span> = <span class="ruby-constant">TbParty</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'id'</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;recevice_code='#{session[:recevice_code]}' and used='Y' and partytype=2&quot;</span>)
+ 60:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_first_record</span>(<span class="ruby-ivar">@area2</span>)<span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 61:         <span class="ruby-ivar">@area2</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ar2</span><span class="ruby-operator">|</span>
+ 62:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ar2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Region</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">ar2</span>.<span class="ruby-identifier">area</span>)
+ 63:             <span class="ruby-ivar">@area22</span> = <span class="ruby-ivar">@area22</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Region</span>.<span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">ar2</span>.<span class="ruby-identifier">area</span>).<span class="ruby-identifier">name</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;、&quot;</span>
+ 64:           <span class="ruby-keyword kw">end</span>
+ 65:         <span class="ruby-keyword kw">end</span>
+ 66:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@area22!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 67:           <span class="ruby-ivar">@area22</span>=<span class="ruby-ivar">@area22</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-ivar">@area22</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">3</span>)
+ 68:         <span class="ruby-keyword kw">end</span>
+ 69:       <span class="ruby-keyword kw">else</span>
+ 70:         <span class="ruby-ivar">@area22</span> = <span class="ruby-value str">&quot;&quot;</span>
+ 71:       <span class="ruby-keyword kw">end</span>
+ 72:       <span class="ruby-comment cmt">#仲裁协议类型</span>
+ 73:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case!</span>=<span class="ruby-keyword kw">nil</span>
+ 74:         <span class="ruby-identifier">record</span> = <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0003' and data_val='#{@case.aribitprotprog_num}'&quot;</span>)
+ 75:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">record</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 76:           <span class="ruby-ivar">@pro_tp</span> = <span class="ruby-identifier">record</span>.<span class="ruby-identifier">data_text</span>
+ 77:         <span class="ruby-keyword kw">else</span>
+ 78:           <span class="ruby-ivar">@pro_tp</span> = <span class="ruby-value str">&quot; &quot;</span>
+ 79:         <span class="ruby-keyword kw">end</span>
+ 80:         <span class="ruby-comment cmt">#仲裁类型</span>
+ 81:         <span class="ruby-identifier">arbit_record</span> = <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0001' and data_val='#{@case.aribitprog_num}'&quot;</span>)
+ 82:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arbit_record</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 83:           <span class="ruby-ivar">@arbit_tp</span> = <span class="ruby-identifier">arbit_record</span>.<span class="ruby-identifier">data_text</span>
+ 84:         <span class="ruby-keyword kw">else</span>
+ 85:           <span class="ruby-ivar">@arbit_tp</span> = <span class="ruby-value str">&quot; &quot;</span>
+ 86:         <span class="ruby-keyword kw">end</span>
+ 87:       <span class="ruby-keyword kw">end</span>
+ 88:       <span class="ruby-comment cmt">#组庭日期</span>
+ 89:       <span class="ruby-identifier">case_org</span> = <span class="ruby-constant">TbCaseorg</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;recevice_code='#{session[:recevice_code]}' and used='Y'&quot;</span>)
+ 90:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">case_org</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 91:         <span class="ruby-ivar">@orgdate</span> = <span class="ruby-identifier">case_org</span>.<span class="ruby-identifier">orgdate</span>
+ 92:       <span class="ruby-keyword kw">else</span>
+ 93:         <span class="ruby-ivar">@orgdate</span> = <span class="ruby-value str">&quot; &quot;</span>
+ 94:       <span class="ruby-keyword kw">end</span>
+ 95:       <span class="ruby-comment cmt">#选定的制裁机构</span>
+ 96:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case!</span>=<span class="ruby-keyword kw">nil</span>
+ 97:         <span class="ruby-identifier">arbit_agent</span> = <span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0004' and data_val='#{@case.agent}'&quot;</span>)
+ 98:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arbit_agent</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+ 99:           <span class="ruby-ivar">@arbit_agent</span> = <span class="ruby-identifier">arbit_agent</span>.<span class="ruby-identifier">data_text</span>
+100:         <span class="ruby-keyword kw">else</span>
+101:           <span class="ruby-ivar">@arbit_agent</span> = <span class="ruby-value str">&quot; &quot;</span>
+102:         <span class="ruby-keyword kw">end</span>
+103:       <span class="ruby-keyword kw">end</span>
+104:       <span class="ruby-comment cmt">######################################################################</span>
+105:       <span class="ruby-comment cmt">#      c=&quot;recevice_code='#{session[:recevice_code]}' and used='Y'&quot;</span>
+106:       <span class="ruby-comment cmt">#      @reduction_pages,@reduction=paginate(:tb_reductions,:order=&gt;'id',:conditions=&gt;c)</span>
+107:     <span class="ruby-keyword kw">end</span>
+108:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001903" class="method-detail">
+        <a name="M001903"></a>
+
+        <div class="method-heading">
+          <a href="#M001903" class="method-signature">
+          <span class="method-name">p_set</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+案件基本情况修改
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001903-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001903-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 133</span>
+133:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">p_set</span>
+134:     <span class="ruby-identifier">typ2</span>=<span class="ruby-constant">TbDictionary</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-node">&quot;typ_code='0002' and state='Y' and data_parent='#{params[:p_typ]}'&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'data_val'</span>,<span class="ruby-identifier">:select=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;data_val,data_text&quot;</span>)
+135:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+136:       <span class="ruby-identifier">page</span>.<span class="ruby-identifier">remove</span> <span class="ruby-value str">'case_casetype_num2'</span>
+137:       <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-value str">'pv_set'</span>, <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'pv'</span>,<span class="ruby-identifier">:object=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">typ2</span>
+138:     <span class="ruby-keyword kw">end</span>
+139:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001904" class="method-detail">
+        <a name="M001904"></a>
+
+        <div class="method-heading">
+          <a href="#M001904" class="method-signature">
+          <span class="method-name">select</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001904-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001904-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 140</span>
+140:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>
+141:     <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+142:     <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:case_code</span>]=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">case_code</span>
+143:     <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">recevice_code</span>
+144:     <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:general_code</span>]=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">general_code</span>
+145:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'casebase'</span>,<span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:act_r</span>]
+146:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001906" class="method-detail">
+        <a name="M001906"></a>
+
+        <div class="method-heading">
+          <a href="#M001906" class="method-signature">
+          <span class="method-name">update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001906-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001906-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/casebase_controller.rb, line 159</span>
+159:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+160:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+161:       <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>]=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>]
+162:     <span class="ruby-keyword kw">end</span>
+163:     <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_recevice_code</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:recevice_code</span>])
+164:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:case</span>])
+165:       <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">case_code</span>.<span class="ruby-identifier">strip</span>
+166:       <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">general_code</span>.<span class="ruby-identifier">strip</span>
+167:       <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">save</span>
+168:       <span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">get_pn_by_recevice_code</span>(<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">recevice_code</span>)
+169:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改成功&quot;</span>
+170:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;edit&quot;</span>,<span class="ruby-identifier">:search_condit=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>],<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:order</span>],<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+171:     <span class="ruby-keyword kw">else</span>
+172:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;修改失败&quot;</span>
+173:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;edit&quot;</span>,<span class="ruby-identifier">:search_condit=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search_condit</span>],<span class="ruby-identifier">:recevice_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:recevice_code</span>],<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:order</span>],<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+174:     <span class="ruby-keyword kw">end</span>
+175:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

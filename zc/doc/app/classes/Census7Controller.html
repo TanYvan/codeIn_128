@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Census7Controller</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Census7Controller</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/census7_controller_rb.html">
+                app/controllers/census7_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+2009-7-9 费用统计
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001446">list7</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001446" class="method-detail">
+        <a name="M001446"></a>
+
+        <div class="method-heading">
+          <a href="#M001446" class="method-signature">
+          <span class="method-name">list7</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001446-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001446-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/census7_controller.rb, line 3</span>
+  3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list7</span>
+  4:     <span class="ruby-ivar">@dispute</span>={<span class="ruby-value str">&quot;01&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案时间段&quot;</span>,<span class="ruby-value str">&quot;02&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;结案时间段&quot;</span>,<span class="ruby-value str">&quot;03&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案结案时间段&quot;</span>}  <span class="ruby-comment cmt">#时间段类型</span>
+  5:     <span class="ruby-ivar">@dispute2</span>={<span class="ruby-value str">&quot;01&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;全部&quot;</span>,<span class="ruby-value str">&quot;02&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;是&quot;</span>,<span class="ruby-value str">&quot;03&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;否&quot;</span>} <span class="ruby-comment cmt">#结案与否</span>
+  6:     <span class="ruby-ivar">@dispute3</span>={<span class="ruby-value str">&quot;01&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;全部&quot;</span>,<span class="ruby-value str">&quot;02&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;本请求&quot;</span>,<span class="ruby-value str">&quot;03&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;反请求&quot;</span>} <span class="ruby-comment cmt">#争议金额类型</span>
+  7:     <span class="ruby-ivar">@datestyle</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:datestyle</span>]
+  8:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:datestyle</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+  9:       <span class="ruby-ivar">@datestyle</span>=<span class="ruby-value str">'01'</span>
+ 10:     <span class="ruby-keyword kw">end</span>
+ 11:     <span class="ruby-ivar">@date1</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date1</span>]
+ 12:     <span class="ruby-ivar">@date2</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date2</span>]
+ 13:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@date2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+ 14:       <span class="ruby-ivar">@date1</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">at_beginning_of_year</span>.<span class="ruby-identifier">to_date</span>
+ 15:       <span class="ruby-ivar">@date2</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+ 16:     <span class="ruby-keyword kw">end</span>
+ 17:     <span class="ruby-ivar">@endcase</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:endcase</span>]
+ 18:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:endcase</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+ 19:       <span class="ruby-ivar">@endcase</span>=<span class="ruby-value str">'01'</span>
+ 20:     <span class="ruby-keyword kw">end</span>
+ 21:     <span class="ruby-ivar">@moneytype</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:moneytype</span>]
+ 22:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:moneytype</span>]<span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+ 23:       <span class="ruby-ivar">@moneytype</span>=<span class="ruby-value str">'01'</span>
+ 24:     <span class="ruby-keyword kw">end</span>
+ 25:     <span class="ruby-ivar">@amout1</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout1</span>]
+ 26:     <span class="ruby-ivar">@amout2</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout2</span>]
+ 27:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout1</span>]<span class="ruby-operator">==</span><span class="ruby-value str">''</span>
+ 28:       <span class="ruby-ivar">@amout1</span>=<span class="ruby-value">0</span>
+ 29:     <span class="ruby-keyword kw">else</span>
+ 30:       <span class="ruby-ivar">@amout1</span>=<span class="ruby-ivar">@amout1</span>.<span class="ruby-identifier">to_i</span>
+ 31:     <span class="ruby-keyword kw">end</span>
+ 32:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout2</span>]<span class="ruby-operator">==</span><span class="ruby-value str">''</span>
+ 33:       <span class="ruby-ivar">@amout2</span>=<span class="ruby-value">0</span>
+ 34:     <span class="ruby-keyword kw">else</span>
+ 35:       <span class="ruby-ivar">@amout2</span>=<span class="ruby-ivar">@amout2</span>.<span class="ruby-identifier">to_i</span>
+ 36:     <span class="ruby-keyword kw">end</span>
+ 37:     
+ 38:     <span class="ruby-identifier">p</span>=<span class="ruby-constant">PubTool</span>.<span class="ruby-identifier">new</span>()
+ 39:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@datestyle</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@date1</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@date2</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@endcase</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@moneytype</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@amout1</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">sql_check_3</span>(<span class="ruby-ivar">@amout2</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword kw">false</span> 
+ 40:         
+ 41:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date1</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@date2</span>
+ 42:           <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;时间选择错误，请重新选择！&quot;</span>
+ 43:           <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list7&quot;</span>
+ 44:         <span class="ruby-keyword kw">end</span>
+ 45:           <span class="ruby-comment cmt">#立案时间段</span>
+ 46:           <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span>
+ 47:             <span class="ruby-comment cmt">#结案的和不结案的，本请求和反请求的争议金额</span>
+ 48:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span>
+ 49:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases where
+ 50:                   tb_cases.used='Y' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+ 51:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where nowdate&gt;='#{@date1}' and
+ 52:                   nowdate&lt;='#{@date2}' and used='Y' and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}'&quot;</span>)
+ 53:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where nowdate&gt;='#{@date1}' and
+ 54:                   nowdate&lt;='#{@date2}' and used='Y' and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 55: 
+ 56:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount) as aa from tb_cases where used='Y'
+ 57:                   and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and amount&gt;='#{@amout1}' and amount&lt;='#{@amout2}'&quot;</span>)
+ 58:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_1) as aa from tb_cases where nowdate&gt;='#{@date1}' and
+ 59:                   nowdate&lt;='#{@date2}' and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}' and used='Y'&quot;</span>)
+ 60:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_2) as aa from tb_cases where nowdate&gt;='#{@date1}' and
+ 61:                   nowdate&lt;='#{@date2}' and used='Y' and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 62: 
+ 63:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-comment cmt">#结案的，本请求和反请求的争议金额</span>
+ 64:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount&gt;='#{@amout1}' and amount&lt;='#{@amout2}'&quot;</span>)
+ 65:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}'&quot;</span>)
+ 66:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 67: 
+ 68:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount&gt;='#{@amout1}' and amount&lt;='#{@amout2}'&quot;</span>)
+ 69:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_1) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}'&quot;</span>)
+ 70:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_2) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is not null and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 71: 
+ 72:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'03'</span> <span class="ruby-comment cmt">#未结案的，本请求和反请求的争议金额</span>
+ 73:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount&gt;='#{@amout1}' and amount&lt;='#{@amout2}'&quot;</span>)
+ 74:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}'&quot;</span>)
+ 75:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(id) as cc from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 76: 
+ 77:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount&gt;='#{@amout1}' and amount&lt;='#{@amout2}'&quot;</span>)
+ 78:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_1) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount_1&gt;='#{@amout1}' and amount_1&lt;='#{@amout2}'&quot;</span>)
+ 79:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(amount_2) as aa from tb_cases where used='Y' and nowdate&gt;='#{@date1}' and nowdate&lt;='#{@date2}' and caseendbook_id_first is null and amount_2&gt;='#{@amout1}' and amount_2&lt;='#{@amout2}'&quot;</span>)
+ 80:            <span class="ruby-keyword kw">end</span>
+ 81:             <span class="ruby-comment cmt">#结案时间段</span>
+ 82:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span>
+ 83:             <span class="ruby-comment cmt">#结案的和不结案的，本请求和反请求的争议金额</span>
+ 84:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span>
+ 85:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+ 86:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+ 87:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+ 88: 
+ 89:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+ 90:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+ 91:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+ 92:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-comment cmt">#结案的，本请求和反请求的争议金额</span>
+ 93:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+ 94:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and caseendbook_id_first is not null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+ 95:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and caseendbook_id_first is not null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+ 96: 
+ 97:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+ 98:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+ 99:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+100: 
+101:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'03'</span> <span class="ruby-comment cmt">#未结案的，本请求和反请求的争议金额</span>
+102:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+103:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+104:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+105: 
+106:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}'&quot;</span>)
+107:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}'&quot;</span>)
+108:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}'&quot;</span>)
+109:            <span class="ruby-keyword kw">end</span>
+110:             <span class="ruby-comment cmt">#立案结案时间段</span>
+111:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'03'</span>
+112:             <span class="ruby-comment cmt">#结案的和不结案的，本请求和反请求的争议金额</span>
+113:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span>
+114:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y'  where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+115:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y' where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+116:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y' where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+117: 
+118:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y' where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+119:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y' where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+120:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases left join tb_caseendbooks on tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_cases.used='Y' and tb_caseendbooks.used='Y' where tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+121:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-comment cmt">#结案的，本请求和反请求的争议金额          </span>
+122:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+123:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+124:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+125: 
+126:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+127:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+128:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases,tb_caseendbooks where tb_cases.used='Y' and tb_caseendbooks.used='Y' and tb_cases.caseendbook_id_first=tb_caseendbooks.id and tb_caseendbooks.decideDate&gt;='#{@date1}' and tb_caseendbooks.decideDate&lt;='#{@date2}' and tb_cases.caseendbook_id_first is not null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+129:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'03'</span> <span class="ruby-comment cmt">#未结案的，本请求和反请求的争议金额</span>
+130:                   <span class="ruby-ivar">@n</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+131:                   <span class="ruby-ivar">@n1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+132:                   <span class="ruby-ivar">@n2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select count(tb_cases.id) as cc from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+133: 
+134:                   <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount) as aa from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount&gt;='#{@amout1}' and tb_cases.amount&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+135:                   <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_1) as aa from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount_1&gt;='#{@amout1}' and tb_cases.amount_1&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+136:                   <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_cases.amount_2) as aa from tb_cases where tb_cases.used='Y' and tb_cases.caseendbook_id_first is null and tb_cases.amount_2&gt;='#{@amout1}' and tb_cases.amount_2&lt;='#{@amout2}' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+137:             <span class="ruby-keyword kw">end</span>      
+138:           <span class="ruby-keyword kw">end</span>
+139:       
+140:       <span class="ruby-keyword kw">end</span>
+141:       
+142:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

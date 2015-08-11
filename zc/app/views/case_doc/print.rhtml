@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>当事人、代理人选择</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css"/>
+    <script language="JavaScript">
+      function checkall() {
+        var a='';
+        if (document.getElementById("cheall").value=='t' )
+        {
+          document.getElementById("cheall").value='f';
+        }
+        else
+        {
+          a='true';
+          document.getElementById("cheall").value='t';
+        }
+        var chec = document.getElementsByName("che");
+        for(i=0; i<chec.length; i++)
+        {
+          chec[i].checked = a;
+        }
+      }
+
+      function getcondi()
+      {
+        var chec = document.getElementsByName("che");
+        var detail = document.getElementsByName("detail");
+        var recevice = document.getElementsByName("recevice_code");
+        
+        var select = document.getElementById("case_code");
+   			var selecText = select.options[select.selectedIndex].text;
+        
+        
+        var a='';
+        for(i=0; i<chec.length; i++)
+        {
+          if (chec[i].checked == true)
+            a=a+chec[i].value+',';
+        }
+        aa=a.substr(0, a.length -1 )
+        var c = document.getElementById("condi_k");
+        c.value=aa;
+        
+        
+        var test = document.getElementById("condi_detail");
+        test.value=detail[0].value;
+        
+        var test = document.getElementById("condi_recevice_code");
+        test.value=recevice[0].value;
+        
+        var test = document.getElementById("condi_case_code");
+        test.value=selecText;
+        
+         
+      }
+    </script>
+  </head>
+  <body>
+    <div class="title"><span class="cBlue">
+        邮件打印列表
+    </span></div>
+    <br/> 
+            <div style="position:relative;"> 
+            咨询流水号：<input  name="recevice_code"  disabled="true"  value = <%= @recevice_code %> />
+            受案号: <select id="case_code">
+            					<option selected = "selected" ><%= @case_code%></option>
+            				</select> 
+            &nbsp;&nbsp;内件品名: <input name="detail" size = "50" > 
+    </div>
+    <%=link_to "返回",:action=>"list",:recevice_code=>@recevice_code %>
+    
+    <table cellspacing="1" class="adminlist" id="to_excel">
+      <thead>
+        <tr >
+          <th>
+            <input type='checkbox' id='cheall' name='cheall' value='f' onclick = "checkall()"  />
+          </th>
+          <th nowrap>
+            姓名
+          </th>
+          <th nowrap>
+            称谓
+          </th>
+          <th nowrap>
+            单位
+          </th>
+          <th nowrap>
+            电话
+          </th>
+          <th nowrap>
+            城市
+          </th>
+          <th nowrap>
+            地址
+          </th>          
+          
+        </tr>
+      </thead>
+     
+      <tbody>
+      <tr>
+        <td colspan="7"><b>当事人信息(申请人)</b></td>
+     </tr>
+       
+        <%i=0%>
+        <%for p in @party1%>
+          <tr class="row<%=i % 2%>">
+            <td>
+              <input type='checkbox' id='che' name='che' value="<%=p.id%>" />
+            </td>
+            <td nowrap>
+              <%=p.partyname%>
+            </td>
+            <td nowrap>
+              <%if p.isperson==1%>
+                <%=TbDictionary.find(:first,:conditions=>["state='Y' and typ_code='8141' and data_val=?",p.dutyname]).data_text%>
+              <%end%>
+            </td>
+            
+            <td nowrap>
+              <%if p.isperson==2%>
+                <%=p.partyname%>
+              <%end%>
+            </td>
+            <td nowrap>
+              <%= p.mobiletel + "  " + p.tel%>
+            </td>
+            <td nowrap>
+              <%=Region.find_by_code(p.area).name%>
+            </td>
+            <td nowrap>
+              <%=p.addr%>
+            </td>
+            
+              <%if p.area!='002' and p.area!='003' and p.area!='004' and p.area.slice(0,3)=="001"%>
+                
+              <%else%>
+                <% Region.find_by_code(p.area).name%>
+              <%end%>
+            
+          </tr>
+          <%i=i+1%>
+        <%end%>
+        
+         <tr>
+        <td colspan="7"><b>当事人信息(被申请人)</b></td>
+     </tr>
+       
+        <%i=0%>
+        <%for p in @party2%>
+          <tr class="row<%=i % 2%>">
+            <td>
+              <input type='checkbox' id='che' name='che' value="<%=p.id%>" />
+            </td>
+            <td nowrap>
+              <%=p.partyname%>
+            </td>
+            <td nowrap>
+              <%if p.isperson==1%>
+                <%=TbDictionary.find(:first,:conditions=>["state='Y' and typ_code='8141' and data_val=?",p.dutyname]).data_text%>
+              <%end%>
+            </td>
+            
+            <td nowrap>
+              <%if p.isperson==2%>
+                <%=p.partyname%>
+              <%end%>
+            </td>
+            <td nowrap>
+              <%= p.mobiletel + "  " + p.tel%>
+            </td>
+            <td nowrap>
+              <%=Region.find_by_code(p.area).name%>
+            </td>
+            <td nowrap>
+              <%=p.addr%>
+            </td>
+            
+              <%if p.area!='002' and p.area!='003' and p.area!='004' and p.area.slice(0,3)=="001"%>
+                
+              <%else%>
+                <% Region.find_by_code(p.area).name%>
+              <%end%>
+            
+          </tr>
+          <%i=i+1%>
+        <%end%>
+        
+ 		 <tr>
+        <td colspan="7"><b>代理人(申请人)信息</b></td>
+     </tr>
+        <%j=0%>
+        <%for a in @tbagent1%>
+          <tr class="row<%=j % 2%>">
+            <td>
+              <input type='checkbox' id='che' name='che' value="d<%=a.id%>" />
+            </td>
+            <td nowrap>
+              <%=a.name%>
+            </td>
+            <td nowrap>
+              <%=a.duty%>
+            </td>
+            <td nowrap>
+              <%=a.company%>
+            </td>
+            <td nowrap>
+              <%=a.mobiletel+ "  " + a.tel%>
+            </td>
+            <td nowrap>
+
+            </td>
+            <td nowrap>
+              <%=a.addr%>
+            </td>
+          </tr>
+          <%j=j+1%>
+        <%end%>
+        
+       <tr>
+        <td colspan="7"><b>代理人(被申请人)信息</b></td>
+     </tr>
+        <%j=0%>
+        <%for a in @tbagent2%>
+          <tr class="row<%=j % 2%>">
+            <td>
+              <input type='checkbox' id='che' name='che' value="d<%=a.id%>" />
+            </td>
+            <td nowrap>
+              <%=a.name%>
+            </td>
+            <td nowrap>
+              <%=a.duty%>
+            </td>
+            <td nowrap>
+              <%=a.company%>
+            </td>
+            <td nowrap>
+              <%=a.mobiletel+ "  " + a.tel%>
+            </td>
+            <td nowrap>
+
+            </td>
+            <td nowrap>
+              <%=a.addr%>
+            </td>
+          </tr>
+          <%j=j+1%>
+        <%end%>
+          
+           <tr>
+           <td colspan="7"><b>仲裁员信息</b></td>
+        </tr>
+          <%k=0%>
+           <%for n in @arbitman_code %>
+         <% @arbitman = TbArbitman.find(:all,:conditions=>["code=?",n.arbitman])%>
+        <%for m in @arbitman %>
+          <tr class="row<%=k % 2%>">
+            <td>
+              <input type='checkbox' id='che' name='che' value="z<%=m.id%>" />
+            </td>
+            <td nowrap>
+              <%=m.name%>
+            </td>
+            <td nowrap>
+              仲裁员
+            </td>
+            <td nowrap>
+              <%=m.company%>
+            </td>
+            <td nowrap>
+              <%=m.mobiletel+ "  " + m.telo%>
+            </td>
+            <td nowrap>
+         <%=Region.find_by_code(m.area_code).name%>
+            </td>
+            <td nowrap>
+              <%=m.addr%>
+            </td>
+             <% Region.find_by_code(m.area_code).name%>
+          </tr>
+          <%k=k+1%>
+        <%end%>
+          <%end%>
+          
+      </tbody>
+    </table>
+    <br>
+    <div align="center">
+      <%form_tag({:action=>'batch_insert'},{:onsubmit=>'getcondi()'}) do %>
+            <%=hidden_field_tag :condi_k ,''%>
+            <%=hidden_field_tag :condi_detail ,''%>
+            <%=hidden_field_tag :condi_recevice_code ,''%>
+            <%=hidden_field_tag :condi_case_code ,''%>
+            <%=submit_tag '开始打印'%>
+      <%end%>
+      
+    </div>
+  </body>
+</html>

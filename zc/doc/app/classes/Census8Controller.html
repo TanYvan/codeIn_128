@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Census8Controller</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Census8Controller</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/census8_controller_rb.html">
+                app/controllers/census8_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+niell 2009-7-9 实际开支费用统计
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000084">list8</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="#M000084" class="method-signature">
+          <span class="method-name">list8</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000084-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000084-source">
+<pre>
+      <span class="ruby-comment cmt"># File app/controllers/census8_controller.rb, line 3</span>
+   3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list8</span>
+   4:     <span class="ruby-ivar">@dispute</span>={<span class="ruby-value str">&quot;01&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案时间段&quot;</span>,<span class="ruby-value str">&quot;02&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;结案时间段&quot;</span>,<span class="ruby-value str">&quot;03&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;立案结案时间段&quot;</span>}  <span class="ruby-comment cmt">#时间段类型</span>
+   5:     <span class="ruby-ivar">@dispute2</span>={<span class="ruby-value str">&quot;01&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;全部&quot;</span>,<span class="ruby-value str">&quot;02&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;是&quot;</span>,<span class="ruby-value str">&quot;03&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;否&quot;</span>} <span class="ruby-comment cmt">#结案与否</span>
+   6:     <span class="ruby-ivar">@datestyle</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:datestyle</span>]
+   7:     <span class="ruby-ivar">@date1</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date1</span>]
+   8:     <span class="ruby-ivar">@date2</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:date2</span>]
+   9:     <span class="ruby-ivar">@endcase</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:endcase</span>]
+  10:     <span class="ruby-identifier">k</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:k</span>]
+  11:     <span class="ruby-identifier">j</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:j</span>]
+  12:     <span class="ruby-ivar">@amout1</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout1</span>]
+  13:     <span class="ruby-ivar">@amout2</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:amout2</span>]
+  14:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@date2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+  15:       <span class="ruby-ivar">@date1</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">at_beginning_of_year</span>.<span class="ruby-identifier">to_date</span>
+  16:       <span class="ruby-ivar">@date2</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+  17:     <span class="ruby-keyword kw">end</span>
+  18:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@date1</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@date2</span>
+  19:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;时间选择错误，请重新选择！&quot;</span>
+  20:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list8&quot;</span>
+  21:     <span class="ruby-keyword kw">end</span>
+  22:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">j!</span>=<span class="ruby-keyword kw">nil</span>
+  23:       <span class="ruby-identifier">endstyle</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:k</span>][<span class="ruby-identifier">:endstyle</span>]
+  24:       <span class="ruby-identifier">aribitprog_num</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:j</span>][<span class="ruby-identifier">:prog</span>]
+  25:     <span class="ruby-keyword kw">end</span>
+  26:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+  27: <span class="ruby-comment cmt">#      flash[:notice]=&quot;请输入金额！&quot;</span>
+  28:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list8&quot;</span>
+  29:     <span class="ruby-keyword kw">elsif</span>  <span class="ruby-ivar">@amout1</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@amout2</span>
+  30:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;请输入正确的金额！&quot;</span>
+  31:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list8&quot;</span>
+  32:     <span class="ruby-keyword kw">else</span>
+  33:     <span class="ruby-keyword kw">end</span>
+  34:     <span class="ruby-comment cmt">#立案时间段</span>
+  35:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@datestyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span>
+  36:        <span class="ruby-comment cmt">#1 结案方式:全部 ,结案与否：全部,仲裁程序：全部</span>
+  37:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+  38:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+  39:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  40:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' 
+  41:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'&quot;</span>)
+  42:           <span class="ruby-comment cmt">#收入----实收</span>
+  43:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+  44:           where tb_cases.used='Y' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' 
+  45:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+  46:           <span class="ruby-comment cmt">#应退</span>
+  47:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+  48:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  49:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' 
+  50:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+  51:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+  52:           <span class="ruby-comment cmt">#已退</span>
+  53:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+  54:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  55:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'
+  56:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+  57:           tb_should_refunds.state=2&quot;</span>)
+  58:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  59:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+  60:           tb_cases.nowdate&lt;='#{@date2}' 
+  61:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+  62:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  63:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+  64:           tb_cases.nowdate&lt;='#{@date2}' 
+  65:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+  66:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+  67:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  68:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  69:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'
+  70:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+  71:           <span class="ruby-comment cmt">#收入</span>
+  72:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+  73:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  74:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'
+  75:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+  76:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+  77:           <span class="ruby-comment cmt">#应退</span>
+  78:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+  79:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  80:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'
+  81:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+  82:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+  83:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+  84:           <span class="ruby-comment cmt">#已退</span>
+  85:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+  86:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+  87:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'
+  88:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+  89:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+  90:           tb_should_refunds.state=2&quot;</span>)
+  91:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  92:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+  93:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+  94:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+  95:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+  96:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+  97:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+  98:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+  99:         <span class="ruby-keyword kw">else</span>
+ 100:         <span class="ruby-keyword kw">end</span>
+ 101:         <span class="ruby-comment cmt">#2 结案方式:结案 ,结案与否：是,仲裁程序：每种仲裁程序类别</span>
+ 102:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span>
+ 103:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 104:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 105:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 106:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 107:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 108:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 109:           and tb_cases.nowdate&lt;='#{@date2}' 
+ 110:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 111:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 112:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 113:           and tb_cases.nowdate&lt;='#{@date2}' 
+ 114:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 115:           <span class="ruby-comment cmt">#收入</span>
+ 116:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges,tb_caseendbooks
+ 117:           where tb_cases.used='Y' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_caseendbooks.used='Y'
+ 118:           and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}' 
+ 119:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 120:           <span class="ruby-comment cmt">#应退</span>
+ 121:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 122:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 123:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 124:            and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 125:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 126:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 127:           <span class="ruby-comment cmt">#已退</span>
+ 128:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 129:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y' 
+ 130:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code 
+ 131:            and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 132:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 133:           tb_should_refunds.state=2&quot;</span>)
+ 134:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 135:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 136:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 137:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 138:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 139:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 140:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 141:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 142:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 143:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 144:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 145:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 146:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 147:           <span class="ruby-comment cmt">#收入</span>
+ 148:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges,tb_caseendbooks
+ 149:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 150:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_caseendbooks.used='Y'
+ 151:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 152:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 153:           <span class="ruby-comment cmt">#应退</span>
+ 154:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 155:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 156:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 157:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 158:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 159:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 160:           <span class="ruby-comment cmt">#已退</span>
+ 161:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 162:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 163:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 164:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 165:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 166:           tb_should_refunds.state=2&quot;</span>)
+ 167:         <span class="ruby-keyword kw">else</span>
+ 168:         <span class="ruby-keyword kw">end</span>
+ 169:       <span class="ruby-comment cmt">#3  结案方式:每种方式 ,结案与否：是, 仲裁程序：全部</span>
+ 170:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 171:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 172:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 173:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 174:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 175:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 176:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 177:           and tb_cases.nowdate&lt;='#{@date2}'
+ 178:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'   and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 179:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 180:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 181:           and tb_cases.nowdate&lt;='#{@date2}'
+ 182:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 183:           <span class="ruby-comment cmt">#收入</span>
+ 184:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges,tb_caseendbooks
+ 185:           where tb_cases.used='Y' and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_caseendbooks.used='Y'
+ 186:            and tb_caseendbooks.endStyle='#{endstyle}'
+ 187:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 188:           <span class="ruby-comment cmt">#应退</span>
+ 189:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 190:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 191:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 192:             and tb_caseendbooks.endStyle='#{endstyle}'
+ 193:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 194:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 195:           <span class="ruby-comment cmt">#已退</span>
+ 196:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 197:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 198:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 199:             and tb_caseendbooks.endStyle='#{endstyle}'
+ 200:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 201:           tb_should_refunds.state=2&quot;</span>)
+ 202:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 203:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 204:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 205:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 206:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 207:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 208:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 209:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 210:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'   and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 211:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 212:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 213:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 214:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 215:           <span class="ruby-comment cmt">#收入</span>
+ 216:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges,tb_caseendbooks
+ 217:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 218:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_caseendbooks.used='Y'
+ 219:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 220:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 221:           <span class="ruby-comment cmt">#应退</span>
+ 222:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 223:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 224:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 225:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 226:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 227:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 228:           <span class="ruby-comment cmt">#已退</span>
+ 229:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds,tb_caseendbooks
+ 230:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.used='Y'
+ 231:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.recevice_code=tb_caseendbooks.recevice_code
+ 232:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 233:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 234:           tb_should_refunds.state=2&quot;</span>)
+ 235:         <span class="ruby-keyword kw">else</span>
+ 236:         <span class="ruby-keyword kw">end</span>
+ 237:       <span class="ruby-comment cmt">#4  结案方式:全部 ,结案与否：是, 仲裁程序：全部</span>
+ 238:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 239:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 240:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 241:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 242:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100&quot;</span>)
+ 243:           <span class="ruby-comment cmt">#收入</span>
+ 244:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+ 245:           where tb_cases.used='Y'
+ 246:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100
+ 247:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 248:           <span class="ruby-comment cmt">#应退</span>
+ 249:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 250:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 251:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100
+ 252:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 253:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 254:           <span class="ruby-comment cmt">#已退</span>
+ 255:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 256:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 257:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 258:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 259:           tb_should_refunds.state=2&quot;</span>)
+ 260:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 261:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+ 262:           tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 263:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 264:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 265:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+ 266:           tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 267:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 268:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 269:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 270:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 271:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 272:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 273:           <span class="ruby-comment cmt">#收入</span>
+ 274:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 275:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 276:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 277:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 278:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 279:           <span class="ruby-comment cmt">#应退</span>
+ 280:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 281:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 282:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 283:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 284:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 285:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 286:           <span class="ruby-comment cmt">#已退</span>
+ 287:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 288:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 289:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 290:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 291:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 292:           tb_should_refunds.state=2&quot;</span>)
+ 293:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 294:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and and tb_cases.state&gt;=100
+ 295:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 296:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 297:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 298:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 299:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 300:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 301:         <span class="ruby-keyword kw">else</span>
+ 302:         <span class="ruby-keyword kw">end</span>
+ 303:       <span class="ruby-comment cmt">#5  结案方式:全部 ,结案与否：是, 仲裁程序：每种仲裁程序</span>
+ 304:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span>
+ 305:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 306:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 307:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 308:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 309:           <span class="ruby-comment cmt">#收入</span>
+ 310:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+ 311:           where tb_cases.used='Y'
+ 312:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}' 
+ 313:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 314:           <span class="ruby-comment cmt">#应退</span>
+ 315:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 316:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 317:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100
+ 318:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 319:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 320:           <span class="ruby-comment cmt">#已退</span>
+ 321:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 322:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 323:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 324:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 325:           tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 326:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 327:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+ 328:           tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 329:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 330:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 331:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and
+ 332:           tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 333:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 334:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 335:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 336:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 337:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 338:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 339:           <span class="ruby-comment cmt">#收入</span>
+ 340:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 341:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 342:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 343:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 344:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 345:           <span class="ruby-comment cmt">#应退</span>
+ 346:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 347:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 348:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 349:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 350:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 351:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 352:           <span class="ruby-comment cmt">#已退</span>
+ 353:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 354:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 355:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 356:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 357:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 358:           tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 359:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 360:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and and tb_cases.state&gt;=100
+ 361:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 362:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 363:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 364:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 365:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 366:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 367:         <span class="ruby-keyword kw">else</span>
+ 368:         <span class="ruby-keyword kw">end</span>
+ 369:       <span class="ruby-keyword kw">end</span>
+ 370:       <span class="ruby-comment cmt">#结案时间段</span>
+ 371:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span>
+ 372:       <span class="ruby-comment cmt">#1 结案方式:全部 ,结案与否：全部,仲裁程序：全部</span>
+ 373:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> 
+ 374:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 375:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 376:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 377:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 378:           <span class="ruby-comment cmt">#收入</span>
+ 379:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+ 380:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 381:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 382:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 383:           <span class="ruby-comment cmt">#应退</span>
+ 384:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 385:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 386:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 387:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 388:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 389:           <span class="ruby-comment cmt">#已退</span>
+ 390:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 391:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 392:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 393:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 394:           tb_should_refunds.state=2&quot;</span>)
+ 395:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 396:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 397:           tb_cases.end_t&lt;='#{@date2}' 
+ 398:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 399:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 400:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 401:           tb_cases.end_t&lt;='#{@date2}' 
+ 402:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 403:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#输入争议金额段</span>
+ 404:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 405:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 406:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 407:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 408:           <span class="ruby-comment cmt">#收入</span>
+ 409:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 410:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 411:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 412:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 413:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 414:           <span class="ruby-comment cmt">#应退</span>
+ 415:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 416:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 417:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 418:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 419:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 420:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 421:           <span class="ruby-comment cmt">#已退</span>
+ 422:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 423:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 424:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 425:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 426:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 427:           tb_should_refunds.state=2&quot;</span>)
+ 428:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 429:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 430:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 431:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 432:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 433:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 434:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 435:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 436:         <span class="ruby-keyword kw">else</span>
+ 437:         <span class="ruby-keyword kw">end</span>
+ 438:       <span class="ruby-comment cmt">#2 结案方式: 每种方式,结案与否：是 ，仲裁程序：每种仲裁程序类型</span>
+ 439:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span>
+ 440:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 441:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 442:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 443:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 444:           <span class="ruby-comment cmt">#收入</span>
+ 445:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_caseendbooks,tb_should_charges
+ 446:           where  tb_cases.recevice_code=tb_caseendbooks.recevice_code  and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 447:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 448:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 449:           <span class="ruby-comment cmt">#应退</span>
+ 450:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 451:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 452:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 453:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 454:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 455:           <span class="ruby-comment cmt">#已退</span>
+ 456:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 457:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 458:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 459:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 460:           tb_should_refunds.state=2&quot;</span>)
+ 461:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 462:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 463:           and tb_cases.end_t&lt;='#{@date2}' 
+ 464:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 465:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 466:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 467:           and tb_cases.end_t&lt;='#{@date2}' 
+ 468:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 469:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 470:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 471:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 472:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 473:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 474:           <span class="ruby-comment cmt">#收入</span>
+ 475:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_charges
+ 476:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 477:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 478:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 479:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 480:           <span class="ruby-comment cmt">#应退</span>
+ 481:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 482:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 483:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 484:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 485:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 486:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 487:           <span class="ruby-comment cmt">#已退</span>
+ 488:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 489:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 490:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 491:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 492:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 493:           tb_should_refunds.state=2&quot;</span>)
+ 494:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 495:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 496:           and tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 497:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 498:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 499:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 500:           and tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 501:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 502:         <span class="ruby-keyword kw">else</span>
+ 503:         <span class="ruby-keyword kw">end</span>
+ 504:       <span class="ruby-comment cmt">#3  结案方式:每种方式 ,结案与否：是, 仲裁程序：全部</span>
+ 505:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 506:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 507:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 508:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 509:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 510:           <span class="ruby-comment cmt">#收入</span>
+ 511:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_caseendbooks,tb_should_charges
+ 512:           where  tb_cases.recevice_code=tb_caseendbooks.recevice_code  and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 513:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 514:           and tb_should_charges.recevice_code=tb_should_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 515:           <span class="ruby-comment cmt">#应退</span>
+ 516:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 517:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 518:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 519:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 520:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 521:           <span class="ruby-comment cmt">#已退</span>
+ 522:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 523:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 524:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 525:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 526:           tb_should_refunds.state=2&quot;</span>)
+ 527:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 528:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 529:           and tb_cases.end_t&lt;='#{@date2}'
+ 530:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'   and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 531:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 532:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 533:           and tb_cases.end_t&lt;='#{@date2}'
+ 534:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 535:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 536:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 537:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 538:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 539:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 540:           <span class="ruby-comment cmt">#收入</span>
+ 541:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_charges
+ 542:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 543:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 544:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 545:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 546:           <span class="ruby-comment cmt">#应退</span>
+ 547:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 548:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 549:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 550:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 551:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 552:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 553:           <span class="ruby-comment cmt">#已退</span>
+ 554:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 555:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 556:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 557:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 558:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 559:           tb_should_refunds.state=2&quot;</span>)
+ 560:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 561:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 562:           and tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 563:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'   and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 564:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 565:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.end_t&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 566:           and tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 567:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 568:         <span class="ruby-keyword kw">else</span>
+ 569:         <span class="ruby-keyword kw">end</span>
+ 570:       <span class="ruby-comment cmt">#4  结案方式:全部 ,结案与否：是, 仲裁程序：全部</span>
+ 571:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 572:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 573:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 574:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 575:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100&quot;</span>)
+ 576:           <span class="ruby-comment cmt">#收入</span>
+ 577:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+ 578:           where  tb_cases.used='Y'
+ 579:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 580:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 581:           <span class="ruby-comment cmt">#应退</span>
+ 582:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 583:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 584:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 585:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 586:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 587:           <span class="ruby-comment cmt">#已退</span>
+ 588:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 589:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 590:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 591:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 592:           tb_should_refunds.state=2&quot;</span>)
+ 593:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 594:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 595:           tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 596:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 597:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 598:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 599:           tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 600:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 601:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#输入争议金额段</span>
+ 602:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 603:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 604:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 605:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 606:           <span class="ruby-comment cmt">#收入</span>
+ 607:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 608:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 609:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 610:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 611:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 612:           <span class="ruby-comment cmt">#应退</span>
+ 613:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 614:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 615:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 616:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 617:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 618:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 619:           <span class="ruby-comment cmt">#已退</span>
+ 620:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 621:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 622:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 623:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 624:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 625:           tb_should_refunds.state=2&quot;</span>)
+ 626:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 627:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 628:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 629:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 630:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 631:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 632:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 633:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 634:         <span class="ruby-keyword kw">else</span>
+ 635:         <span class="ruby-keyword kw">end</span>
+ 636:       <span class="ruby-comment cmt">#5  结案方式:全部 ,结案与否：是, 仲裁程序：每种仲裁程序</span>
+ 637:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span>
+ 638:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 639:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 640:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 641:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 642:           <span class="ruby-comment cmt">#收入</span>
+ 643:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_should_charges
+ 644:           where tb_cases.used='Y'
+ 645:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 646:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 647:           <span class="ruby-comment cmt">#应退</span>
+ 648:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 649:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 650:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 651:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 652:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 653:           <span class="ruby-comment cmt">#已退</span>
+ 654:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 655:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 656:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 657:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 658:           tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 659:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 660:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 661:           tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 662:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 663:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 664:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}' and
+ 665:           tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 666:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 667:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt">#输入争议金额段</span>
+ 668:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 669:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 670:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 671:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 672:           <span class="ruby-comment cmt">#收入</span>
+ 673:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 674:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 675:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+ 676:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 677:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y' and tb_charges.state=2&quot;</span>)
+ 678:           <span class="ruby-comment cmt">#应退</span>
+ 679:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 680:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 681:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 682:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 683:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 684:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 685:           <span class="ruby-comment cmt">#已退</span>
+ 686:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 687:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 688:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and tb_cases.state&gt;=100
+ 689:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 690:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 691:           tb_should_refunds.state=2 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 692:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 693:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 694:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 695:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 696:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 697:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.end_t&gt;='#{@date1}'  and tb_cases.state&gt;=100 and
+ 698:           tb_cases.end_t&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 699:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 700:         <span class="ruby-keyword kw">else</span>
+ 701:         <span class="ruby-keyword kw">end</span>
+ 702:       <span class="ruby-keyword kw">else</span>
+ 703:       <span class="ruby-keyword kw">end</span>
+ 704:       <span class="ruby-comment cmt">#立案结案时间段</span>
+ 705:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'03'</span>
+ 706:       <span class="ruby-comment cmt">#1 结案方式:全部 ,结案与否：全部,仲裁程序：全部</span>
+ 707:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'01'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 708:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 709:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 710:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 711:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 712:           <span class="ruby-comment cmt">#收入</span>
+ 713:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 714:           where  tb_cases.used='Y'
+ 715:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 716:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 717:           <span class="ruby-comment cmt">#应退</span>
+ 718:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 719:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 720:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 721:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 722:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 723:           <span class="ruby-comment cmt">#已退</span>
+ 724:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 725:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 726:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 727:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 728:           tb_should_refunds.state=2&quot;</span>)
+ 729:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 730:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+ 731:           tb_cases.nowdate&lt;='#{@date2}' 
+ 732:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 733:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 734:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+ 735:           tb_cases.nowdate&lt;='#{@date2}' 
+ 736:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 737:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 738:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 739:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 740:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 741:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'&quot;</span>)
+ 742:           <span class="ruby-comment cmt">#收入</span>
+ 743:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 744:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 745:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 746:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 747:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 748:           <span class="ruby-comment cmt">#应退</span>
+ 749:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 750:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 751:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 752:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 753:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 754:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 755:           <span class="ruby-comment cmt">#已退</span>
+ 756:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 757:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 758:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 759:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 760:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 761:           tb_should_refunds.state=2&quot;</span>)
+ 762:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 763:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+ 764:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 765:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 766:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 767:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+ 768:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 769:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 770:         <span class="ruby-keyword kw">else</span>
+ 771:         <span class="ruby-keyword kw">end</span>
+ 772:        <span class="ruby-comment cmt">#2 结案方式:结案 ,结案与否：是,仲裁程序：每种仲裁程序类别</span>
+ 773:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span>
+ 774:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 775:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 776:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 777:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 778:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 779:           <span class="ruby-comment cmt">#收入</span>
+ 780:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_cases,tb_caseendbooks,tb_should_charges
+ 781:           where tb_cases.recevice_code=tb_caseendbooks.recevice_code  and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 782:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 783:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 784:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 785:           <span class="ruby-comment cmt">#应退</span>
+ 786:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 787:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 788:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 789:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 790:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 791:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 792:           <span class="ruby-comment cmt">#已退</span>
+ 793:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 794:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 795:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 796:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 797:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 798:           tb_should_refunds.state=2&quot;</span>)
+ 799:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 800:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 801:           and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 802:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 803:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 804:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 805:           and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 806:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 807:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 808:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 809:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 810:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 811:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 812:           <span class="ruby-comment cmt">#收入</span>
+ 813:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_charges
+ 814:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 815:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 816:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 817:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 818:           <span class="ruby-comment cmt">#应退</span>
+ 819:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 820:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 821:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 822:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 823:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 824:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 825:           <span class="ruby-comment cmt">#已退</span>
+ 826:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 827:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 828:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'
+ 829:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 830:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 831:           tb_should_refunds.state=2&quot;</span>)
+ 832:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 833:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 834:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 835:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 836:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 837:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 838:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 839:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 840:         <span class="ruby-keyword kw">else</span>
+ 841:         <span class="ruby-keyword kw">end</span>
+ 842:       <span class="ruby-comment cmt">#3  结案方式:每种方式 ,结案与否：是, 仲裁程序：全部</span>
+ 843:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-operator">&amp;&amp;</span>  <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 844:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 845:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 846:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 847:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 848:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 849:           <span class="ruby-comment cmt">#收入</span>
+ 850:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_charges
+ 851:           where tb_cases.recevice_code=tb_caseendbooks.recevice_code  and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 852:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 853:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 854:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 855:           <span class="ruby-comment cmt">#应退</span>
+ 856:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 857:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 858:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 859:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 860:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 861:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 862:           <span class="ruby-comment cmt">#已退</span>
+ 863:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 864:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 865:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 866:           and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 867:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 868:           tb_should_refunds.state=2&quot;</span>)
+ 869:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 870:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 871:           and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 872:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'   and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 873:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 874:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 875:           and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 876:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 877:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 878:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 879:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 880:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 881:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 882:           <span class="ruby-comment cmt">#收入</span>
+ 883:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_charges
+ 884:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 885:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 886:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 887:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 888:           <span class="ruby-comment cmt">#应退</span>
+ 889:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 890:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 891:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 892:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 893:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 894:           tb_should_refunds.state=1 and tb_should_refunds.state=2&quot;</span>)
+ 895:           <span class="ruby-comment cmt">#已退</span>
+ 896:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_caseendbooks,tb_should_refunds
+ 897:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 898:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}'  and tb_caseendbooks.endStyle='#{endstyle}'
+ 899:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 900:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 901:           tb_should_refunds.state=2&quot;</span>)
+ 902:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 903:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 904:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 905:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 906:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases,tb_caseendbooks
+ 907:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.recevice_code=tb_caseendbooks.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.state&gt;=100
+ 908:           and tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 909:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'  and tb_caseendbooks.endStyle='#{endstyle}'&quot;</span>)
+ 910:         <span class="ruby-keyword kw">else</span>
+ 911:         <span class="ruby-keyword kw">end</span>
+ 912:       <span class="ruby-comment cmt">#4  结案方式:全部 ,结案与否：是, 仲裁程序：全部</span>
+ 913:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span>
+ 914:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 915:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 916:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 917:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'&quot;</span>)
+ 918:           <span class="ruby-comment cmt">#收入</span>
+ 919:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 920:           where  and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 921:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 922:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 923:           <span class="ruby-comment cmt">#应退</span>
+ 924:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 925:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 926:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 927:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 928:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.state&gt;=100 &quot;</span>)
+ 929:           <span class="ruby-comment cmt">#已退</span>
+ 930:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 931:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 932:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 933:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 934:           tb_should_refunds.state=2 and tb_cases.state&gt;=100&quot;</span>)
+ 935:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 936:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+ 937:           tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100
+ 938:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 939:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 940:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+ 941:           tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100
+ 942:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+ 943:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+ 944:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 945:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 946:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 947:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.state&gt;=100&quot;</span>)
+ 948:           <span class="ruby-comment cmt">#收入</span>
+ 949:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 950:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 951:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 952:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.state&gt;=100
+ 953:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+ 954:           <span class="ruby-comment cmt">#应退</span>
+ 955:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 956:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 957:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 958:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 959:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 960:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.state&gt;=100&quot;</span>)
+ 961:           <span class="ruby-comment cmt">#已退</span>
+ 962:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 963:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 964:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 965:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 966:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 967:           tb_should_refunds.state=2 and tb_cases.state&gt;=100&quot;</span>)
+ 968:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 969:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+ 970:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 971:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100&quot;</span>)
+ 972:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 973:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+ 974:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+ 975:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100&quot;</span>)
+ 976:         <span class="ruby-keyword kw">else</span>
+ 977:         <span class="ruby-keyword kw">end</span>
+ 978:       <span class="ruby-comment cmt">#5  结案方式:全部 ,结案与否：是, 仲裁程序：每种仲裁程序</span>
+ 979:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@endcase</span><span class="ruby-operator">==</span><span class="ruby-value str">'02'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">endstyle</span><span class="ruby-operator">==</span><span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-value str">'1'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aribitprog_num!</span>=<span class="ruby-keyword kw">nil</span>
+ 980:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@amout1</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@amout2</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#未输入争议金额段</span>
+ 981:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+ 982:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100
+ 983:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 984:               and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 985:           <span class="ruby-comment cmt">#收入</span>
+ 986:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+ 987:           where tb_cases.used='Y' and tb_cases.state&gt;=100
+ 988:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 989:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 990:           <span class="ruby-comment cmt">#应退</span>
+ 991:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+ 992:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 993:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+ 994:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+ 995:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.state&gt;=100  and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+ 996:           <span class="ruby-comment cmt">#已退</span>
+ 997:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+ 998:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+ 999:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+1000:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+1001:           tb_should_refunds.state=2 and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+1002:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+1003:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+1004:           tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+1005:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+1006:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+1007:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+1008:           tb_cases.nowdate&lt;='#{@date2}'  and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+1009:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y'&quot;</span>)
+1010:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@amout1!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@amout2!</span>=<span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt">#输入争议金额段</span>
+1011:           <span class="ruby-ivar">@partytype</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+1012:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.aribitprog_num='#{aribitprog_num}' 
+1013:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+1014:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.state&gt;=100&quot;</span>)
+1015:           <span class="ruby-comment cmt">#收入</span>
+1016:           <span class="ruby-ivar">@recome</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_charges.re_rmb_money) as dd from tb_case_amounts,tb_cases,tb_should_charges
+1017:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+1018:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+1019:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'
+1020:           and tb_should_charges.recevice_code=tb_cases.recevice_code and tb_should_charges.used='Y'&quot;</span>)
+1021:           <span class="ruby-comment cmt">#应退</span>
+1022:           <span class="ruby-ivar">@should_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as ff from tb_case_amounts,tb_cases,tb_should_refunds
+1023:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+1024:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+1025:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}' and tb_cases.aribitprog_num='#{aribitprog_num}'
+1026:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+1027:           tb_should_refunds.state=1 and tb_should_refunds.state=2 and tb_cases.state&gt;=100&quot;</span>)
+1028:           <span class="ruby-comment cmt">#已退</span>
+1029:           <span class="ruby-ivar">@has_refund</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_should_refunds.rmb_money) as hh from tb_case_amounts,tb_cases,tb_should_refunds
+1030:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_case_amounts.used='Y' and tb_cases.used='Y'
+1031:           and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.nowdate&lt;='#{@date2}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'
+1032:           and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+1033:           and tb_should_refunds.recevice_code=tb_cases.recevice_code and tb_should_refunds.used='Y' and
+1034:           tb_should_refunds.state=2 and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+1035:           <span class="ruby-ivar">@partytype1</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+1036:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}'  and
+1037:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+1038:           and tb_case_amounts.partytype='1' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}'&quot;</span>)
+1039:           <span class="ruby-ivar">@partytype2</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-node">&quot;select sum(tb_case_amounts.rmb_money) as aa,count(tb_cases.id) as cc from tb_case_amounts,tb_cases
+1040:           where tb_case_amounts.recevice_code=tb_cases.recevice_code and tb_cases.nowdate&gt;='#{@date1}' and tb_cases.end_t&gt;='#{@date1}' and tb_cases.end_t&lt;='#{@date2}' and
+1041:           tb_cases.nowdate&lt;='#{@date2}' and tb_case_amounts.rmb_money&gt;='#{@amout1}' and tb_case_amounts.rmb_money&lt;='#{@amout2}'
+1042:           and tb_case_amounts.partytype='2' and tb_case_amounts.used='Y' and tb_cases.used='Y' and tb_cases.state&gt;=100 and tb_cases.aribitprog_num='#{aribitprog_num}' &quot;</span>)
+1043:         <span class="ruby-keyword kw">else</span>
+1044:         <span class="ruby-keyword kw">end</span>
+1045:       <span class="ruby-keyword kw">end</span>
+1046:     <span class="ruby-keyword kw">else</span>
+1047:     <span class="ruby-keyword kw">end</span>
+1048: 
+1049: 
+1050: 
+1051:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

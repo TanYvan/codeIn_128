@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: DataOldTController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">DataOldTController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/data_old_t_controller_rb.html">
+                app/controllers/data_old_t_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001508">edit</a>&nbsp;&nbsp;
+      <a href="#M001506">index</a>&nbsp;&nbsp;
+      <a href="#M001510">insert_do</a>&nbsp;&nbsp;
+      <a href="#M001507">list</a>&nbsp;&nbsp;
+      <a href="#M001509">update</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001508" class="method-detail">
+        <a name="M001508"></a>
+
+        <div class="method-heading">
+          <a href="#M001508" class="method-signature">
+          <span class="method-name">edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+def new
+</p>
+<pre>
+  @data_old_t = DataOldT.new
+</pre>
+<p>
+end
+</p>
+<p>
+def create
+</p>
+<pre>
+  @data_old_t = DataOldT.new(params[:data_old_t])
+  if @data_old_t.save
+    flash[:notice] = 'DataOldT was successfully created.'
+    redirect_to :action =&gt; 'list'
+  else
+    render :action =&gt; 'new'
+  end
+</pre>
+<p>
+end
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001508-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001508-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/data_old_t_controller.rb, line 37</span>
+37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+38:     <span class="ruby-ivar">@data_old_t</span> = <span class="ruby-constant">DataOldT</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+39:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001506" class="method-detail">
+        <a name="M001506"></a>
+
+        <div class="method-heading">
+          <a href="#M001506" class="method-signature">
+          <span class="method-name">index</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001506-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001506-source">
+<pre>
+   <span class="ruby-comment cmt"># File app/controllers/data_old_t_controller.rb, line 2</span>
+2:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+3:     <span class="ruby-identifier">list</span>
+4:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'list'</span>
+5:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001510" class="method-detail">
+        <a name="M001510"></a>
+
+        <div class="method-heading">
+          <a href="#M001510" class="method-signature">
+          <span class="method-name">insert_do</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001510-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001510-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/data_old_t_controller.rb, line 52</span>
+ 52:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert_do</span>
+ 53:     <span class="ruby-ivar">@condi</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:condi</span>]
+ 54:     <span class="ruby-identifier">array_con</span> = <span class="ruby-ivar">@condi</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+ 55:     <span class="ruby-keyword kw">begin</span>
+ 56:       <span class="ruby-identifier">array_con</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">con</span><span class="ruby-operator">|</span>
+ 57:         <span class="ruby-identifier">d</span>=<span class="ruby-constant">DataOldT</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">con</span>)
+ 58:         <span class="ruby-comment cmt">###</span>
+ 59:         <span class="ruby-ivar">@case</span>=<span class="ruby-constant">TbCase</span>.<span class="ruby-identifier">new</span>()
+ 60:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+ 61:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+ 62:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+ 63:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">receivedate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">receivedate</span>
+ 64:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">nowdate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">nowdate</span>
+ 65:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">accepttime</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">accepttime</span>
+ 66:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">casereason</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">casereason</span>
+ 67:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">clerk</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">clerk</span>
+ 68:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">clerk_2</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">clerk</span>
+ 69:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">aribitprog_num</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">aribitprog_num</span>
+ 70:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">aribitprotprog_num</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">aribitprotprog_num</span>
+ 71:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">t_casetype_num</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">t_casetype_num</span>
+ 72:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">finally_limit_dat</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">finally_limit_dat</span>
+ 73:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">trial_typ</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">trial_typ</span>
+ 74:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">end_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">end_code</span>
+ 75:         <span class="ruby-comment cmt">### 组庭信息</span>
+ 76:         <span class="ruby-ivar">@caseorg</span>=<span class="ruby-constant">TbCaseorg</span>.<span class="ruby-identifier">new</span>()
+ 77:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+ 78:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+ 79:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+ 80:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">orgdate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">orgdate</span>
+ 81:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">limitdate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">finally_limit_dat</span>
+ 82:         <span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">save</span>
+ 83:         <span class="ruby-comment cmt">### 仲裁员信息</span>
+ 84:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0001!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 85:           <span class="ruby-ivar">@arb</span>=<span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">new</span>()
+ 86:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+ 87:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+ 88:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+ 89:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitman</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0001</span>
+ 90:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0002!</span>=<span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0003!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 91:             <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmantype</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+ 92:           <span class="ruby-keyword kw">else</span>
+ 93:             <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmantype</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+ 94:           <span class="ruby-keyword kw">end</span>
+ 95:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmansign</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitmansign_0001</span>
+ 96:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">save</span>
+ 97:         <span class="ruby-keyword kw">end</span>
+ 98:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0002!</span>=<span class="ruby-value str">&quot;&quot;</span>
+ 99:           <span class="ruby-ivar">@arb</span>=<span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">new</span>()
+100:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+101:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+102:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+103:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitman</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0002</span>
+104:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmantype</span>=<span class="ruby-value str">&quot;0003&quot;</span>
+105:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmansign</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitmansign_0002</span>
+106:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">save</span>
+107:         <span class="ruby-keyword kw">end</span>
+108:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0003!</span>=<span class="ruby-value str">&quot;&quot;</span>
+109:           <span class="ruby-ivar">@arb</span>=<span class="ruby-constant">TbCasearbitman</span>.<span class="ruby-identifier">new</span>()
+110:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+111:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+112:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+113:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitman</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitman_0003</span>
+114:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmantype</span>=<span class="ruby-value str">&quot;0004&quot;</span>
+115:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">arbitmansign</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">arbitmansign_0003</span>
+116:           <span class="ruby-ivar">@arb</span>.<span class="ruby-identifier">save</span>
+117:         <span class="ruby-keyword kw">end</span>
+118:         <span class="ruby-comment cmt">### 结案信息</span>
+119:         <span class="ruby-ivar">@end</span>=<span class="ruby-constant">TbCaseendbook</span>.<span class="ruby-identifier">new</span>()
+120:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+121:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+122:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+123:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">arbitBookNum</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">end_code</span>
+124:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">endStyle</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">end_style</span>
+125:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">decideDate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">end_date</span>
+126:         <span class="ruby-ivar">@end</span>.<span class="ruby-identifier">save</span>
+127:         <span class="ruby-comment cmt">### 延期日期</span>
+128:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">delayDate!</span>=<span class="ruby-keyword kw">nil</span>
+129:           <span class="ruby-ivar">@delay</span>=<span class="ruby-constant">TbCasedelay</span>.<span class="ruby-identifier">new</span>()
+130:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+131:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+132:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+133:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">requestman_typ</span>=<span class="ruby-value str">&quot;0000&quot;</span>
+134:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">reason</span>=<span class="ruby-value str">&quot;-&quot;</span>
+135:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">delayDate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">delayDate</span>
+136:           <span class="ruby-ivar">@delay</span>.<span class="ruby-identifier">save</span>
+137:         <span class="ruby-keyword kw">end</span>
+138:         <span class="ruby-comment cmt">### 反请求收费情况信息表</span>
+139:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0002!</span>=<span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0003!</span>=<span class="ruby-value">0</span>
+140:           <span class="ruby-ivar">@b_should_charge</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+141:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+142:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+143:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+144:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0001'</span>
+145:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+146:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0002</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0003</span>
+147:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+148:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0002</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0003</span>
+149:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">redu_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_reduction</span>
+150:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_charge</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span> )
+151:           <span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">save</span>
+152:           <span class="ruby-comment cmt">##</span>
+153:           <span class="ruby-ivar">@b_should_charge_0002</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+154:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+155:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+156:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+157:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0002'</span>
+158:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+159:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0002</span>
+160:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+161:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0002</span>
+162:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">id</span>
+163:           <span class="ruby-ivar">@b_should_charge_0002</span>.<span class="ruby-identifier">save</span>
+164:           <span class="ruby-comment cmt">##</span>
+165:           <span class="ruby-ivar">@b_should_charge_0003</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+166:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+167:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+168:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+169:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0003'</span>
+170:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+171:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0003</span>
+172:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+173:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0003</span>
+174:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_should_charge</span>.<span class="ruby-identifier">id</span>
+175:           <span class="ruby-ivar">@b_should_charge_0003</span>.<span class="ruby-identifier">save</span>
+176:         <span class="ruby-keyword kw">end</span>
+177:         <span class="ruby-comment cmt">### 反请求退费情况信息表</span>
+178:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds!</span>=<span class="ruby-value">0</span>
+179:           <span class="ruby-ivar">@b_refunds</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">new</span>()  
+180:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+181:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+182:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+183:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+184:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>   
+185:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds</span>
+186:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+187:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds</span>
+188:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds</span>
+189:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">2</span>
+190:           <span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">save</span>
+191:           <span class="ruby-comment cmt">##</span>
+192:           <span class="ruby-ivar">@b_refunds_0003</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">new</span>()  
+193:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+194:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+195:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+196:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0003&quot;</span>
+197:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>   
+198:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds</span>
+199:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+200:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_refunds</span>
+201:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_refunds</span>.<span class="ruby-identifier">id</span>
+202:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">2</span>
+203:           <span class="ruby-ivar">@b_refunds_0003</span>.<span class="ruby-identifier">save</span>
+204:         <span class="ruby-keyword kw">end</span>
+205:         <span class="ruby-comment cmt">### 反请求方无明确争议金额收费</span>
+206:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span> <span class="ruby-operator">!=</span><span class="ruby-value">0</span>
+207:           <span class="ruby-ivar">@b_should_charge_0004</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+208:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+209:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+210:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+211:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0004'</span>
+212:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+213:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span> 
+214:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+215:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span>
+216:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span>
+217:           <span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">save</span>
+218:           <span class="ruby-comment cmt">##</span>
+219:           <span class="ruby-ivar">@b_should_charge_0006</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+220:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+221:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+222:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+223:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0006'</span>
+224:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+225:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span>
+226:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+227:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0004</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_qt2</span>
+228:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_should_charge_0004</span>.<span class="ruby-identifier">id</span>
+229:           <span class="ruby-ivar">@b_should_charge_0006</span>.<span class="ruby-identifier">save</span>
+230:         <span class="ruby-keyword kw">end</span>
+231:         <span class="ruby-comment cmt">### 反请求方 审计费 代收代支</span>
+232:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0007!</span>=<span class="ruby-value">0</span>
+233:           <span class="ruby-ivar">@b_should_charge_0007</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+234:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+235:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+236:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+237:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0007'</span>
+238:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+239:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0007</span>
+240:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+241:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0007</span>
+242:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_should_charge_0007</span>
+243:           <span class="ruby-ivar">@b_should_charge_0007</span>.<span class="ruby-identifier">save</span>
+244:         <span class="ruby-keyword kw">end</span>
+245:         <span class="ruby-comment cmt">### 反请求方争议金额</span>
+246:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount!</span>=<span class="ruby-value">0</span>
+247:           <span class="ruby-ivar">@b_amount</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">new</span>()
+248:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+249:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+250:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+251:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+252:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+253:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+254:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+255:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount</span>
+256:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount</span>
+257:           <span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">save</span>
+258:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_rmb!</span>=<span class="ruby-value">0</span>
+259:             <span class="ruby-ivar">@b_amount_rmb</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+260:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+261:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+262:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+263:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+264:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+265:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+266:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+267:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_rmb</span>
+268:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_rmb</span>
+269:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">id</span>
+270:             <span class="ruby-ivar">@b_amount_rmb</span>.<span class="ruby-identifier">save</span>
+271:           <span class="ruby-keyword kw">end</span>
+272:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_usa!</span>=<span class="ruby-value">0</span>
+273:             <span class="ruby-ivar">@b_amount_usa</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+274:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+275:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+276:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+277:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+278:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+279:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+280:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+281:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_usa</span>
+282:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">rate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_rate_usa</span>
+283:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">round_2</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_usa</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_rate_usa</span>)
+284:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">id</span>
+285:             <span class="ruby-ivar">@b_amount_usa</span>.<span class="ruby-identifier">save</span>
+286:           <span class="ruby-keyword kw">end</span>
+287:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_hk!</span>=<span class="ruby-value">0</span>
+288:             <span class="ruby-ivar">@b_amount_hk</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+289:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+290:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+291:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+292:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+293:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+294:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+295:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0003&quot;</span>
+296:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_hk</span>
+297:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">rate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_rate_hk</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>
+298:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">round_2</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_hk</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_rate_hk</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>)
+299:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_amount</span>.<span class="ruby-identifier">id</span>
+300:             <span class="ruby-ivar">@b_amount_hk</span>.<span class="ruby-identifier">save</span>
+301:           <span class="ruby-keyword kw">end</span>
+302:         <span class="ruby-keyword kw">end</span>
+303:         <span class="ruby-comment cmt">### 反请求不明确争议金额</span>
+304:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002!</span>=<span class="ruby-value">0</span>
+305:           <span class="ruby-ivar">@b_amount_0002</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">new</span>()
+306:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+307:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+308:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+309:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+310:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+311:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+312:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+313:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002</span>
+314:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002</span>
+315:           <span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">save</span>
+316:           
+317:           <span class="ruby-ivar">@b_amount_0002_rmb</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+318:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+319:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+320:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+321:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+322:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+323:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+324:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+325:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002</span>
+326:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002</span>
+327:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@b_amount_0002</span>.<span class="ruby-identifier">id</span>
+328:           <span class="ruby-ivar">@b_amount_0002_rmb</span>.<span class="ruby-identifier">save</span>
+329:           
+330:         <span class="ruby-keyword kw">end</span>
+331:         <span class="ruby-comment cmt">#######</span>
+332:         <span class="ruby-comment cmt">#######</span>
+333:         <span class="ruby-comment cmt">### 请求收费情况信息表</span>
+334:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0002!</span>=<span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0003!</span>=<span class="ruby-value">0</span>
+335:           <span class="ruby-ivar">@a_should_charge</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+336:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+337:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+338:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+339:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0001'</span>
+340:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+341:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0002</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0003</span>
+342:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+343:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0002</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0003</span>
+344:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">redu_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_reduction</span>
+345:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_charge</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>)
+346:           <span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">save</span>
+347:           <span class="ruby-comment cmt">##</span>
+348:           <span class="ruby-ivar">@a_should_charge_0002</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+349:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+350:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+351:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+352:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0002'</span>
+353:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+354:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0002</span>
+355:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+356:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0002</span>
+357:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">id</span>
+358:           <span class="ruby-ivar">@a_should_charge_0002</span>.<span class="ruby-identifier">save</span>
+359:           <span class="ruby-comment cmt">##</span>
+360:           <span class="ruby-ivar">@a_should_charge_0003</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+361:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+362:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+363:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+364:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0003'</span>
+365:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+366:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0003</span>
+367:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+368:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0003</span>
+369:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_should_charge</span>.<span class="ruby-identifier">id</span>
+370:           <span class="ruby-ivar">@a_should_charge_0003</span>.<span class="ruby-identifier">save</span>
+371:         <span class="ruby-keyword kw">end</span>
+372:         <span class="ruby-comment cmt">### 请求退费情况信息表</span>
+373:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds!</span>=<span class="ruby-value">0</span>
+374:           <span class="ruby-ivar">@a_refunds</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">new</span>()  
+375:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+376:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+377:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+378:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+379:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>   
+380:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds</span>
+381:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+382:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds</span>
+383:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds</span>
+384:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">2</span>
+385:           <span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">save</span>
+386:           <span class="ruby-comment cmt">##</span>
+387:           <span class="ruby-ivar">@a_refunds_0003</span>=<span class="ruby-constant">TbShouldRefund</span>.<span class="ruby-identifier">new</span>()  
+388:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+389:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+390:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+391:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0003&quot;</span>
+392:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>   
+393:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds</span>
+394:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+395:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_refunds</span>
+396:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_refunds</span>.<span class="ruby-identifier">id</span>
+397:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">2</span>
+398:           <span class="ruby-ivar">@a_refunds_0003</span>.<span class="ruby-identifier">save</span>
+399:         <span class="ruby-keyword kw">end</span>
+400:         <span class="ruby-comment cmt">### 请求方无明确争议金额收费</span>
+401:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span> <span class="ruby-operator">!=</span><span class="ruby-value">0</span>
+402:           <span class="ruby-ivar">@a_should_charge_0004</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+403:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+404:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+405:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+406:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0004'</span>
+407:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+408:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>
+409:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+410:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>
+411:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>
+412:           <span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">save</span>
+413:           <span class="ruby-comment cmt">##</span>
+414:           <span class="ruby-ivar">@a_should_charge_0006</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+415:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+416:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+417:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+418:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0006'</span>
+419:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+420:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>
+421:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+422:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0004</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_qt2</span>
+423:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_should_charge_0004</span>.<span class="ruby-identifier">id</span>
+424:           <span class="ruby-ivar">@a_should_charge_0006</span>.<span class="ruby-identifier">save</span>
+425:         <span class="ruby-keyword kw">end</span>
+426:         <span class="ruby-comment cmt">### 请求方 审计费 代收代支</span>
+427:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0007!</span>=<span class="ruby-value">0</span>
+428:           <span class="ruby-ivar">@a_should_charge_0007</span>=<span class="ruby-constant">TbShouldCharge</span>.<span class="ruby-identifier">new</span>()
+429:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+430:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+431:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+432:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">'0007'</span>
+433:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">payment</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+434:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0007</span>
+435:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+436:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0007</span>
+437:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">re_rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_should_charge_0007</span>
+438:           <span class="ruby-ivar">@a_should_charge_0007</span>.<span class="ruby-identifier">save</span>
+439:         <span class="ruby-keyword kw">end</span>
+440:         <span class="ruby-comment cmt">### 请求方争议金额</span>
+441:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount!</span>=<span class="ruby-value">0</span>
+442:           <span class="ruby-ivar">@a_amount</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">new</span>()
+443:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+444:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+445:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+446:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+447:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+448:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+449:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+450:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount</span>
+451:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount</span>
+452:           <span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">save</span>
+453:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_rmb!</span>=<span class="ruby-value">0</span>
+454:             <span class="ruby-ivar">@a_amount_rmb</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+455:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+456:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+457:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+458:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+459:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+460:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+461:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+462:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_rmb</span>
+463:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_rmb</span>
+464:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">id</span>
+465:             <span class="ruby-ivar">@a_amount_rmb</span>.<span class="ruby-identifier">save</span>
+466:           <span class="ruby-keyword kw">end</span>
+467:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_usa!</span>=<span class="ruby-value">0</span>
+468:             <span class="ruby-ivar">@a_amount_usa</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+469:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+470:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+471:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+472:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+473:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+474:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+475:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+476:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_usa</span>
+477:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">rate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_rate_usa</span>
+478:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">round_2</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_usa</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_rate_usa</span>)
+479:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">id</span>
+480:             <span class="ruby-ivar">@a_amount_usa</span>.<span class="ruby-identifier">save</span>
+481:           <span class="ruby-keyword kw">end</span>
+482:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_hk!</span>=<span class="ruby-value">0</span>
+483:             <span class="ruby-ivar">@a_amount_hk</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+484:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+485:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+486:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+487:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+488:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+489:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+490:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0003&quot;</span>
+491:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_hk</span>
+492:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">rate</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_rate_hk</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>
+493:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-constant">SysArg</span>.<span class="ruby-identifier">round_2</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_hk</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_rate_hk</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>)
+494:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_amount</span>.<span class="ruby-identifier">id</span>
+495:             <span class="ruby-ivar">@a_amount_hk</span>.<span class="ruby-identifier">save</span>
+496:           <span class="ruby-keyword kw">end</span>
+497:         <span class="ruby-keyword kw">end</span>
+498:         <span class="ruby-comment cmt">### 请求不明确争议金额</span>
+499:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002!</span>=<span class="ruby-value">0</span>
+500:           <span class="ruby-ivar">@a_amount_0002</span>=<span class="ruby-constant">TbCaseAmount</span>.<span class="ruby-identifier">new</span>()
+501:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+502:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+503:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+504:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+505:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+506:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+507:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+508:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002</span>
+509:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002</span>
+510:           <span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">save</span>
+511:           
+512:           <span class="ruby-ivar">@a_amount_0002_rmb</span>=<span class="ruby-constant">TbCaseAmountDetail</span>.<span class="ruby-identifier">new</span>()
+513:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+514:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+515:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+516:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+517:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">typ</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+518:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">amount_typ</span>=<span class="ruby-value str">&quot;0002&quot;</span>
+519:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">currency</span>=<span class="ruby-value str">&quot;0001&quot;</span>
+520:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">f_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002</span>
+521:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">rmb_money</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002</span>
+522:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">parent_id</span>=<span class="ruby-ivar">@a_amount_0002</span>.<span class="ruby-identifier">id</span>
+523:           <span class="ruby-ivar">@a_amount_0002_rmb</span>.<span class="ruby-identifier">save</span>
+524:           
+525:         <span class="ruby-keyword kw">end</span>
+526:         <span class="ruby-comment cmt">### 申请人、申请人代理人</span>
+527:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">party!</span>=<span class="ruby-value str">&quot;&quot;</span>
+528:           <span class="ruby-identifier">party_text</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">party</span>
+529:           <span class="ruby-identifier">pp</span>=<span class="ruby-identifier">party_text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;】【&quot;</span>)
+530:           
+531:           <span class="ruby-identifier">agent_text</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">agent</span>
+532:           <span class="ruby-identifier">ab</span>=<span class="ruby-identifier">agent_text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;』『&quot;</span>)
+533:           
+534:           <span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>
+535:           <span class="ruby-identifier">pp</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p_name</span><span class="ruby-operator">|</span>
+536:             <span class="ruby-ivar">@party</span>=<span class="ruby-constant">TbParty</span>.<span class="ruby-identifier">new</span>()
+537:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+538:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+539:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+540:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+541:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">partyname</span>=<span class="ruby-identifier">p_name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;】&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;【&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+542:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">save</span>
+543:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ab</span>[<span class="ruby-identifier">i</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+544:               <span class="ruby-identifier">abab</span>=<span class="ruby-identifier">ab</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;][&quot;</span>)
+545:               <span class="ruby-identifier">abab</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a_name</span><span class="ruby-operator">|</span>
+546:                 <span class="ruby-ivar">@agent</span>=<span class="ruby-constant">TbAgent</span>.<span class="ruby-identifier">new</span>()
+547:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+548:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+549:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+550:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">status</span>=<span class="ruby-value str">&quot;0000&quot;</span>
+551:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">1</span>
+552:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">party_id</span>=<span class="ruby-ivar">@party</span>.<span class="ruby-identifier">id</span>
+553:                 <span class="ruby-identifier">a_name_a</span>=<span class="ruby-identifier">a_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;（&quot;</span>)
+554:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+555:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">name</span>=<span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;『&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;』&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;]&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;[&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;（&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;）&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+556:                 <span class="ruby-keyword kw">end</span>
+557:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+558:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span>=<span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;『&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;』&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;]&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;[&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;（&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;）&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+559:                 <span class="ruby-keyword kw">end</span>
+560:                 <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span><span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+561:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span>=<span class="ruby-value str">&quot;-&quot;</span>
+562:                 <span class="ruby-keyword kw">end</span>
+563:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">save</span>
+564:               <span class="ruby-keyword kw">end</span>
+565:             <span class="ruby-keyword kw">end</span>
+566:             <span class="ruby-identifier">i</span>=<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+567:           <span class="ruby-keyword kw">end</span>
+568:       
+569:         <span class="ruby-keyword kw">end</span>
+570:         <span class="ruby-comment cmt">### 被申请人、被申请人代理人</span>
+571:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_party!</span>=<span class="ruby-value str">&quot;&quot;</span>
+572:           <span class="ruby-identifier">party_text</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_party</span>
+573:           <span class="ruby-identifier">pp</span>=<span class="ruby-identifier">party_text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;】【&quot;</span>)
+574:           
+575:           <span class="ruby-identifier">agent_text</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_agent</span>
+576:           <span class="ruby-identifier">ab</span>=<span class="ruby-identifier">agent_text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;『』&quot;</span>)
+577:           
+578:           <span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>
+579:           <span class="ruby-identifier">pp</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p_name</span><span class="ruby-operator">|</span>
+580:             <span class="ruby-ivar">@party</span>=<span class="ruby-constant">TbParty</span>.<span class="ruby-identifier">new</span>()
+581:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+582:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+583:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+584:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+585:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">partyname</span>=<span class="ruby-identifier">p_name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;】&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;【&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+586:             <span class="ruby-ivar">@party</span>.<span class="ruby-identifier">save</span>
+587:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ab</span>[<span class="ruby-identifier">i</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+588:               <span class="ruby-identifier">abab</span>=<span class="ruby-identifier">ab</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;][&quot;</span>)
+589:               <span class="ruby-identifier">abab</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a_name</span><span class="ruby-operator">|</span>
+590:                 <span class="ruby-ivar">@agent</span>=<span class="ruby-constant">TbAgent</span>.<span class="ruby-identifier">new</span>()
+591:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">recevice_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">recevice_code</span>
+592:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">general_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">general_code</span>
+593:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">case_code</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">case_code</span>
+594:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">status</span>=<span class="ruby-value str">&quot;0000&quot;</span>
+595:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">partytype</span>=<span class="ruby-value">2</span>
+596:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">party_id</span>=<span class="ruby-ivar">@party</span>.<span class="ruby-identifier">id</span>
+597:                 <span class="ruby-identifier">a_name_a</span>=<span class="ruby-identifier">a_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;（&quot;</span>)
+598:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a_name</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+599:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">name</span>=<span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;『&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;』&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;]&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;[&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;（&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;）&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+600:                 <span class="ruby-keyword kw">end</span>
+601:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a_name</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">!=</span><span class="ruby-keyword kw">nil</span>
+602:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span>=<span class="ruby-identifier">a_name_a</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;『&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;』&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;]&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;[&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;（&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;）&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+603:                 <span class="ruby-keyword kw">end</span>
+604:                 <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span><span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+605:                   <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">company</span>=<span class="ruby-value str">&quot;-&quot;</span>
+606:                 <span class="ruby-keyword kw">end</span>
+607:                 <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">save</span>
+608:               <span class="ruby-keyword kw">end</span>
+609:             <span class="ruby-keyword kw">end</span>
+610:             <span class="ruby-identifier">i</span>=<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+611:           <span class="ruby-keyword kw">end</span>
+612:         <span class="ruby-keyword kw">end</span>
+613:         <span class="ruby-comment cmt">###</span>
+614:         
+615:         
+616:         
+617:         
+618:         <span class="ruby-comment cmt">### 补充tb_cases表信息</span>
+619:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@caseorg!</span>=<span class="ruby-keyword kw">nil</span>
+620:           <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">caseorg_id_first</span>=<span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">id</span>
+621:           <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">caseorg_id_last</span>=<span class="ruby-ivar">@caseorg</span>.<span class="ruby-identifier">id</span>
+622:         <span class="ruby-keyword kw">end</span>
+623:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@end!</span>=<span class="ruby-keyword kw">nil</span>
+624:           <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">caseendbook_id_first</span>=<span class="ruby-ivar">@end</span>.<span class="ruby-identifier">id</span>
+625:           <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">caseendbook_id_last</span>=<span class="ruby-ivar">@end</span>.<span class="ruby-identifier">id</span>
+626:         <span class="ruby-keyword kw">end</span>
+627:         <span class="ruby-comment cmt">###</span>
+628:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">amount_2</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">b_amount_0002</span>
+629:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">amount_1</span>=<span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">a_amount_0002</span>
+630:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">amount</span>=<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">amount_1</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">amount_2</span>
+631:         <span class="ruby-comment cmt">###</span>
+632:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">state</span>=<span class="ruby-value">280</span>
+633:         <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">save</span>
+634:         <span class="ruby-identifier">d</span>.<span class="ruby-identifier">st</span>=<span class="ruby-value">1</span>
+635:         <span class="ruby-identifier">d</span>.<span class="ruby-identifier">save</span>
+636:         
+637:         <span class="ruby-ivar">@caseorg</span>=<span class="ruby-keyword kw">nil</span>
+638:         <span class="ruby-ivar">@end</span>=<span class="ruby-keyword kw">nil</span>
+639:       <span class="ruby-keyword kw">end</span>  
+640:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;历史数据批量创建成功！&quot;</span>  
+641:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list&quot;</span>,<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+642:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotSaved</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+643:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-value str">&quot;历史数据批量创建失败！&quot;</span>
+644:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;list&quot;</span>,<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]  
+645:     <span class="ruby-keyword kw">end</span>
+646:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001507" class="method-detail">
+        <a name="M001507"></a>
+
+        <div class="method-heading">
+          <a href="#M001507" class="method-signature">
+          <span class="method-name">list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001507-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001507-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/data_old_t_controller.rb, line 11</span>
+11:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list</span>
+12:     <span class="ruby-ivar">@page_lines</span>=<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+13:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page_lines</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@page_lines</span><span class="ruby-operator">==</span><span class="ruby-value str">&quot;&quot;</span>
+14:       <span class="ruby-ivar">@page_lines</span>=<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:lines</span>]
+15:     <span class="ruby-keyword kw">end</span>
+16:     <span class="ruby-ivar">@data_old_t_pages</span>,<span class="ruby-ivar">@data_old_ts</span>= <span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">:data_old_ts</span>,<span class="ruby-identifier">:conditions=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;st=0&quot;</span>,<span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;id&quot;</span>,<span class="ruby-identifier">:per_page=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@page_lines</span>.<span class="ruby-identifier">to_i</span>)
+17:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001509" class="method-detail">
+        <a name="M001509"></a>
+
+        <div class="method-heading">
+          <a href="#M001509" class="method-signature">
+          <span class="method-name">update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001509-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001509-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/data_old_t_controller.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+42:     <span class="ruby-ivar">@data_old_t</span> = <span class="ruby-constant">DataOldT</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+43:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@data_old_t</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:data_old_t</span>])
+44:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'修改成功'</span>
+45:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'list'</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@data_old_t</span>,<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+46:     <span class="ruby-keyword kw">else</span>
+47:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'修改失败'</span>
+48:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'edit'</span>,<span class="ruby-identifier">:page=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page</span>],<span class="ruby-identifier">:page_lines=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:page_lines</span>]
+49:     <span class="ruby-keyword kw">end</span>
+50:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
