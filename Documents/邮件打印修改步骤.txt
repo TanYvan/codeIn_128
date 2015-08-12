@@ -10,6 +10,8 @@
 
 6 此阶段 目前基本功能实现 
 
+7 在表格可做局部 删除 修改 的方法：参考‘修改案件基本情况’的做法
+
  <select name="detail1" > 
            				 <option value="仲裁申请受理通知书">仲裁申请受理通知书</option>
     							 <option value="仲裁通知">仲裁通知</option>
